@@ -25,11 +25,12 @@ public class CardDisplay : MonoBehaviour
         //damageText.text = $"{cardData.damageMin} - {cardData.damageMax}";
 
         //Update Type Image
+        // Not curretly update the image properly. Needs to be fixed
         for (int i = 0; i < typeImage.Length; i++){
             if(i < cardData.cardType.Count){
                 typeImage[i].gameObject.SetActive(true);
             } else{
-                //typeImage[i].gameObject.SetActive(false);
+                typeImage[i].gameObject.SetActive(false);
             }
         }
     }
