@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
+    [Header("Movement Settings")]
     [SerializeField] private float walkSpeed = 2f;
     private Rigidbody2D rb; 
     private Vector2 direction = Vector2.zero;
