@@ -22,7 +22,6 @@ public class DeckManager : MonoBehaviour
     {
         //Load all card assets from the Resources folder
         Card[] cards = Resources.LoadAll<Card>("Cards");
-        Debug.Log(cards.Length);        
 
         //Add the loaded cards to the allCards list
         allCards.AddRange(cards);
