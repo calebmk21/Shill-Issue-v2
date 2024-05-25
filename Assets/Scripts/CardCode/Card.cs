@@ -18,7 +18,9 @@ namespace ShillIssue
         public int damageMin;
         public int damageMax;
         public List<AttackType> attackType;
-        public Sprite cardSprite;
+        // Card Sprite
+        public Sprite cardImage;
+        public GameObject perfab;
 
     }
 

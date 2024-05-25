@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Card1
   m_EditorClassIdentifier: 
   cardName: Card1
-  descriptionText: blah blah blah
+  descriptionText: Little dudes!
   cardType: 00000000
   damageMin: 3
   damageMax: 5
   attackType: 01000000
-  cardSprite: {fileID: 21300000, guid: 51e44e2f99ae247fd8ff5eff7d2b9805, type: 3}
+  cardImage: {fileID: 21300000, guid: 6df9b9dea17c54ab394171b79edb19d0, type: 3}
+  perfab: {fileID: 7366723940860846956, guid: 2e1f672b9fade4e96a4ab3d0ccaabcf0, type: 3}

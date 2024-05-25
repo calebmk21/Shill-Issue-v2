@@ -45,7 +45,7 @@ public class ArcRenderer : MonoBehaviour
         PositionAndRotateArrow(mousePos);
     }
 
-    void UpdateArc(Vector3 start, Vector3 mid, Vector3 end)
+    public void UpdateArc(Vector3 start, Vector3 mid, Vector3 end)
     {
         int numDots = Mathf.CeilToInt(Vector3.Distance(start, end) / (spacing * spacingScale));
 
@@ -78,7 +78,7 @@ public class ArcRenderer : MonoBehaviour
         }
     }
 
-    void PositionAndRotateArrow(Vector3 position)
+    public void PositionAndRotateArrow(Vector3 position)
     {
         arrowInstance.transform.position = position;
         Vector3 direction = arrowDirection - position;
@@ -87,7 +87,7 @@ public class ArcRenderer : MonoBehaviour
         arrowInstance.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); // The same as (0,0,1)
     }
     
-    Vector3 CalculateMidPoint(Vector3 start, Vector3 end)
+    public Vector3 CalculateMidPoint(Vector3 start, Vector3 end)
     {
         Vector3 midpoint = (start + end) / 2;
         float arcHeight = Vector3.Distance(start, end) / 3f;

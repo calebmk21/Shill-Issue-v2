@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class OptionsManager : MonoBehaviour
 {
-    private AudioBehaviour audioBehaviour;
+
+    void Start()
+    {
+
+    }
 }

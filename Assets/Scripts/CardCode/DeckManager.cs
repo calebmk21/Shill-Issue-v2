@@ -7,10 +7,10 @@ public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
 
-    public int startingHandSize = 0;
+    [SerializeField] public int startingHandSize = 0;
 
     private int currentIndex = 0;
-    public int maxHandSize;
+    [SerializeField] public int maxHandSize = 5;
     public int currentHandSize;
     private HandManager handManager;
 

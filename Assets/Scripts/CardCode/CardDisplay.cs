@@ -13,16 +13,12 @@ public class CardDisplay : MonoBehaviour
     public TMP_Text nameText;
     public TMP_Text descriptionText;
     public Image[] typeImage;
-    //public TMP_Text damageText;
-
-    void Start(){
-        UpdateCardDisplay();
-    }
+    public Image displayImage;
 
     public void UpdateCardDisplay(){
         nameText.text = cardData.cardName;
         descriptionText.text = cardData.descriptionText;
-        //damageText.text = $"{cardData.damageMin} - {cardData.damageMax}";
+        displayImage.sprite = cardData.cardImage;
 
         //Update Type Image
         // Not curretly update the image properly. Needs to be fixed
