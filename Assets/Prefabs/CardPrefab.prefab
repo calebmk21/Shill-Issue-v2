@@ -475,11 +475,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectScale: 1.1
-  cardPlay: {x: 0, y: 400}
-  playPosition: {x: -600, y: 500, z: 0}
+  cardPlay: {x: 0, y: 270}
+  playPosition: {x: -770, y: 540, z: 0}
   glowEffect: {fileID: 307353719345751596}
   playArrow: {fileID: 5977574109244913868}
   lerpFactor: 0.1
+  cardPlayDivider: 4
+  cardPlayMultiplier: 1
+  needUpdateCardPlayPosition: 0
+  playPositionYDivider: 2
+  playPositionYMultiplier: 1
+  playPositionXDivider: -3
+  playPositionXMultiplier: 1.2
+  needUpdatePlayPosition: 0
 --- !u!1 &4814409954102023244
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2160580359409941575}
-  - component: {fileID: 7606734584162527506}
+  - component: {fileID: 8981950638872999531}
   m_Layer: 0
   m_Name: PlayArrow
   m_TagString: Untagged
@@ -592,7 +600,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7606734584162527506
+--- !u!114 &8981950638872999531
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -604,13 +612,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a300775b2d24d679c3fbb944a9a269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 0}
-  dotPrefab: {fileID: 0}
+  arrowPrefab: {fileID: 6391198283012258688, guid: 7af71b382672e4be3bb69ea34eccae3f, type: 3}
+  dotPrefab: {fileID: 4786468686822281621, guid: 2163c3fc3436b4f189e3e7cb0fc97026, type: 3}
   poolSize: 50
-  dotPool: []
-  spacing: 50
-  arrowAngleAdjustment: 0
-  dotsToSkip: 1
+  spacing: 40
+  arrowAngleAdjustment: 180
+  dotsToSkip: 2
+  baseScreenWidth: 1920
+  spacingScale: 0
 --- !u!1 &6919286177700655029
 GameObject:
   m_ObjectHideFlags: 0
