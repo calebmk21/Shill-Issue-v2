@@ -11,11 +11,14 @@ public class GameManager : MonoBehaviour
     public DeckManager DeckManager{ get; private set; }
 
     private int playerHealth;
+    private int playerMaxHealth;
     private int difficulty = 5;
 
     [SerializeField]
     private List<CardEnumMatch> cardDictSetup = new List<CardEnumMatch>();
     public Dictionary<CardEnum, ShillIssue.Card> entityObjectDict = new Dictionary<CardEnum, ShillIssue.Card>();
+
+    public List<ShillIssue.Card> deck = new List<ShillIssue.Card>();
 
 
     public enum CardEnum
@@ -82,6 +85,11 @@ public class GameManager : MonoBehaviour
     {
         get{ return playerHealth; }
         set {playerHealth = value; }
+    }
+    public int PlayerMaxHealth
+    {
+        get { return playerMaxHealth; }
+        set { playerMaxHealth = value; }
     }
 
     public int Difficulty
