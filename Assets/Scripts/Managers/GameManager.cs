@@ -92,6 +92,25 @@ public class GameManager : MonoBehaviour
         set { playerMaxHealth = value; }
     }
 
+    public void updatePlayerHealth(int val)
+    {
+        playerHealth += val;
+        if (playerHealth > playerMaxHealth)
+        {
+            playerHealth = playerMaxHealth;
+        }
+
+        if (playerHealth < 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        ;
+    }
+
     public int Difficulty
     {
         get{ return difficulty; }

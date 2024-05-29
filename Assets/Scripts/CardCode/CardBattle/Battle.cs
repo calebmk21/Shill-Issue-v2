@@ -19,6 +19,7 @@ public class Battle : MonoBehaviour
     public float maxMana = 100f;
 
     public int drawNum = 5;
+    public float manaGain = 10f;
 
     //public List<EnemyEntity> enemyUnits = new List<EnemyEntity>();
 
@@ -26,11 +27,11 @@ public class Battle : MonoBehaviour
     public List<ShillIssue.Card> hand = new List<ShillIssue.Card>();
     public List<ShillIssue.Card> discardPile = new List<ShillIssue.Card>();
 
-    public delegate void OnDiscardSpell(ShillIssue.Card spell);
-    public static event OnDiscardSpell onDiscardSpell;
+    public delegate void OnDiscardCard(ShillIssue.Card card);
+    public static event OnDiscardCard onDiscardCard;
 
-    public delegate void OnDrawSpell(ShillIssue.Card spell);
-    public static event OnDrawSpell onDrawSpell;
+    public delegate void OnDrawCard(ShillIssue.Card card);
+    public static event OnDrawCard onDrawCard;
 
     public delegate void OnChangeState(GameplayState newState);
     public static event OnChangeState onChangeState;
@@ -53,6 +54,21 @@ public class Battle : MonoBehaviour
     {
         onChangeResource?.Invoke();
     }
+
+    public void ChangeMana(float amt)
+    {
+        currentMana += amt;
+
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+        }
+        else if (currentMana < 0)
+        {
+            currentMana = 0;
+        }
+        UpdateResourceUI();
+    }
     
     private void ChangeGameplayState(GameplayState newState)
     {
@@ -63,17 +79,17 @@ public class Battle : MonoBehaviour
     public void StartBattle()
     {
         ChangeGameplayState(GameplayState.PLAYING);
-        foreach (ShillIssue.Card spell in GameManager._instance.deck)
+        foreach (ShillIssue.Card card in GameManager._instance.deck)
         {
-            drawPile.Add(spell);
+            drawPile.Add(card);
         }
     }
 
     public void ShuffleDiscard()
     {
-        foreach (ShillIssue.Card spell in discardPile)
+        foreach (ShillIssue.Card card in discardPile)
         {
-            drawPile.Add(spell);
+            drawPile.Add(card);
         }
 
         drawPile.Shuffle();
@@ -81,14 +97,14 @@ public class Battle : MonoBehaviour
         discardPile.Clear();
     }
 
-    public void DiscardSpell(ShillIssue.Card spell)
+    public void DiscardCard(int index)
     {
-        discardPile.Add(spell);
-        hand.Remove(spell);
-        onDiscardSpell?.Invoke(spell);
+        onDiscardCard?.Invoke(hand[index]);
+        discardPile.Add(hand[index]);
+        hand.RemoveAt(index);
     }
 
-    public void DrawSpells(int num)
+    public void DrawCards(int num)
     {
         for (int i = 0; i < num; i++)
         {
@@ -100,36 +116,45 @@ public class Battle : MonoBehaviour
                     return;
                 }
             }
-            ShillIssue.Card spell = drawPile[0];
+            ShillIssue.Card card = drawPile[0];
             drawPile.RemoveAt(0);
-            hand.Add(spell);
+            hand.Add(card);
 
-            onDrawSpell?.Invoke(spell);
+            onDrawCard?.Invoke(card);
         }
     }
 
-    public void QueueNextHand()
+    public void StartTurn()
     {
-        foreach (ShillIssue.Card spell in hand)
-        {
-            discardPile.Add(spell);
-        }
-
-        hand.Clear();
-
-        DrawSpells(drawNum);
+        ChangeMana(manaGain);
+        DrawCards(drawNum);
     }
 
     public void EndTurn()
     {
         for (int i = hand.Count - 1; i > -1; i--)
         {
-            DiscardSpell(hand[i]);
+            DiscardCard(i);
         }
+        EnemyTurn();
     }
 
-    public void PlayCard(ShillIssue.Card card)
+    public void EnemyTurn()
     {
+        // Enemy Stuff
+
+        StartTurn();
+    }
+
+    public bool IsPlayable(ShillIssue.Card card)
+    {
+        return card.damageMax <= currentMana;
+    }
+
+    public bool PlayCard(ShillIssue.Card card, int index)
+    {
+        if (!IsPlayable(card)) { return false; }
+
         foreach (ShillIssue.CardType cardType in card.cardType)
         {
             switch (cardType)
@@ -137,10 +162,14 @@ public class Battle : MonoBehaviour
                 case ShillIssue.CardType.Dmg:
                     break;
                 case ShillIssue.CardType.Heal:
+                    GameManager._instance.updatePlayerHealth(card.damageMax); // change to heal value;
                     break;
                 default:
                     break;
             }
         }
+
+        DiscardCard(index);
+        return true;
     }
 }
