@@ -694,7 +694,7 @@ MonoBehaviour:
   poolSize: 50
   spacing: 40
   arrowAngleAdjustment: 180
-  dotsToSkip: 4
+  dotsToSkip: 3
   baseScreenWidth: 1920
   spacingScale: 0
 --- !u!1 &6919286177700655029
