@@ -10,12 +10,10 @@ public class GameManager : MonoBehaviour
     public AudioManager AudioManager{ get; private set; }
     public DeckManager DeckManager{ get; private set; }
 
-    private int playerHealth;
-    private int playerMaxHealth;
     private int difficulty = 5;
 
     [SerializeField]
-    private List<CardEnumMatch> cardDictSetup = new List<CardEnumMatch>();
+    private List<ShillIssue.Card> cardDictSetup = new List<ShillIssue.Card>();
     public Dictionary<CardEnum, ShillIssue.Card> entityObjectDict = new Dictionary<CardEnum, ShillIssue.Card>();
 
     public List<ShillIssue.Card> deck = new List<ShillIssue.Card>();
@@ -39,9 +37,9 @@ public class GameManager : MonoBehaviour
             InitializeManagers();
         }
 
-        foreach (CardEnumMatch match in cardDictSetup)
+        foreach (ShillIssue.Card card in cardDictSetup)
         {
-            entityObjectDict.Add(match.cardType, match.cardData);
+            entityObjectDict.Add(card.cardEnum, card);
         }
     }
 
@@ -85,36 +83,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-    }
-
-    public int PlayerHealth
-    {
-        get{ return playerHealth; }
-        set {playerHealth = value; }
-    }
-    public int PlayerMaxHealth
-    {
-        get { return playerMaxHealth; }
-        set { playerMaxHealth = value; }
-    }
-
-    public void updatePlayerHealth(int val)
-    {
-        playerHealth += val;
-        if (playerHealth > playerMaxHealth)
-        {
-            playerHealth = playerMaxHealth;
-        }
-
-        if (playerHealth < 0)
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        ;
     }
 
     public int Difficulty

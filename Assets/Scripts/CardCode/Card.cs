@@ -10,13 +10,22 @@ namespace ShillIssue
     {
         public string cardName;
         public string descriptionText;
+        public GameManager.CardEnum cardEnum;
         public List<CardType> cardType;
+
+        public bool targetSelf = false;
         
         // If we ant to do Summons We could give them health
         //public int health;
         
         public int damageMin;
         public int damageMax;
+
+        public int healMin;
+        public int healMax;
+
+        public StatusEffect statusEffect;
+
         public List<AttackType> attackType;
         // Card Sprite
         public Sprite cardImage;
@@ -24,18 +33,32 @@ namespace ShillIssue
 
     }
 
+    [System.Serializable]
+    public struct StatusEffect
+    {
+        public StatusType statusType;
+        public int statusNum;
+    }
+
     public enum CardType
     {
         //heal player
         Heal,
         //damage enemy
-        Dmg
+        Dmg,
+        Status
     }
 
     public enum AttackType
     {
         Instant,
         OverTime
+    }
+
+    public enum StatusType
+    {
+        Strength,
+        Vulnerable
     }
 
 }
