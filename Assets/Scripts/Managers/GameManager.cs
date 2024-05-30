@@ -45,6 +45,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static class GameData
+    {
+        public static Vector3 playerPosition;
+    }
+
+
     private void InitializeManagers()
     {
         OptionsManager = GetComponentInChildren<OptionsManager>();
