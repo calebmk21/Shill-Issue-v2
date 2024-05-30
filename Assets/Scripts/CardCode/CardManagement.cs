@@ -7,11 +7,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler //IPointerExitHandler, IDragHandler
+public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 {
     private RectTransform rectTransform;
     private Canvas canvas;
-    private RectTransform canvasRectTranform;
+    private RectTransform canvasRectTransform;
     private Vector3 originalScale;
     private int currentState = 0;
     private Quaternion originalRotation;
@@ -33,6 +33,9 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
     [SerializeField] private float playPositionXMultiplier = 1f;
     [SerializeField] private bool needUpdatePlayPosition = false;
 
+    private BoxCollider2D playerAreaCollider;
+    private BoxCollider2D enemyAreaCollider;
+
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -40,7 +43,7 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
 
         if (canvas != null)
         {
-            canvasRectTranform = canvas.GetComponent<RectTransform>();
+            canvasRectTransform = canvas.GetComponent<RectTransform>();
         }
 
         originalScale = rectTransform.localScale;
@@ -50,20 +53,44 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
         // Initialize original sibling index
         originalSiblingIndex = rectTransform.GetSiblingIndex();
 
-        updateCardPlayPostion();
-        updatePlayPostion();
+        updateCardPlayPosition();
+        updatePlayPosition();
+
+        // Find the player and enemy areas by their tags and get their colliders
+        GameObject playerArea = GameObject.FindGameObjectWithTag("Player");
+        GameObject enemyArea = GameObject.FindGameObjectWithTag("Enemy");
+
+        if (playerArea != null)
+        {
+            playerAreaCollider = playerArea.GetComponent<BoxCollider2D>();
+            Debug.Log("Player Area found");
+        }
+        else
+        {
+            Debug.LogError("Player area not found!");
+        }
+
+        if (enemyArea != null)
+        {
+            enemyAreaCollider = enemyArea.GetComponent<BoxCollider2D>();
+            Debug.Log("Enemy Area found");
+        }
+        else
+        {
+            Debug.LogError("Enemy area not found!");
+        }
     }
 
     void Update()
     {
         if (needUpdateCardPlayPosition)
         {
-            updateCardPlayPostion();
+            updateCardPlayPosition();
         }
 
         if (needUpdatePlayPosition)
         {
-            updatePlayPostion();
+            updatePlayPosition();
         }
 
         switch (currentState)
@@ -78,12 +105,11 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
             case 3:
                 if (!Input.GetMouseButton(0)) // Check if mouse button is released
                 {
-                    TransitionToState0();
+                    OnMouseUp();
                 }
                 break;
         }
     }
-
 
     private void TransitionToState0()
     {
@@ -110,59 +136,25 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
         }
     }
 
-    // public void OnPointerExit(PointerEventData eventData)
-    // {
-    //     if (currentState == 1)
-    //     {
-    //         TransitionToState0();
-    //     }
-    // }
-
     public void OnPointerDown(PointerEventData eventData)
     {
-        // Remove this if statement
-        // if (currentState == 1)
-        // {
-            currentState = 2;
+        currentState = 2;
 
-            // Save the original sibling index (if not already saved)
-            if (currentState == 0)
-            {
-                originalSiblingIndex = rectTransform.GetSiblingIndex();
-            }
+        // Save the original sibling index (if not already saved)
+        if (currentState == 0)
+        {
+            originalSiblingIndex = rectTransform.GetSiblingIndex();
+        }
 
-            // Move the card to the front layer
-            rectTransform.SetAsLastSibling();
-        // }
+        // Move the card to the front layer
+        rectTransform.SetAsLastSibling();
     }
-
-    // public void OnDrag(PointerEventData eventData)
-    // {
-    //     if (currentState == 2)
-    //     {
-    //         if (Input.mousePosition.y > cardPlay.y)
-    //         {
-    //             currentState = 3;
-    //             playArrow.SetActive(true);
-
-    //             // Adjust this line to snap to the desired position
-    //             rectTransform.localPosition = playPosition; 
-    //         }
-    //     }
-    // }
 
     private void HandleHoverState()
     {
         glowEffect.SetActive(true);
         rectTransform.localScale = originalScale * selectScale;
     }
-
-    // private void HandleDragState()
-    // {
-    //     // Set the card's rotation to zero
-    //     rectTransform.localRotation = Quaternion.identity;
-    //     rectTransform.position = Vector3.Lerp(rectTransform.position, Input.mousePosition, lerpFactor);
-    // }
 
     private void HandlePlayState()
     {
@@ -173,32 +165,70 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
         {
             currentState = 3;
             playArrow.SetActive(true);
-
-            // Adjust this line to snap to the desired position
-            // rectTransform.localPosition = playPosition; 
         }
     }
 
-
-    private void updateCardPlayPostion()
+    private void updateCardPlayPosition()
     {
-        if (cardPlayDivider != 0 && canvasRectTranform != null)
+        if (cardPlayDivider != 0 && canvasRectTransform != null)
         {
             float segment = cardPlayMultiplier / cardPlayDivider;
-            cardPlay.y = canvasRectTranform.rect.height * segment;
+            cardPlay.y = canvasRectTransform.rect.height * segment;
         }
     }
 
-    private void updatePlayPostion()
+    private void updatePlayPosition()
     {
-        if (canvasRectTranform != null && playPositionYDivider != 0 && playPositionXDivider != 0)
+        if (canvasRectTransform != null && playPositionYDivider != 0 && playPositionXDivider != 0)
         {
             float segmentX = playPositionXMultiplier / playPositionXDivider;
             float segmentY = playPositionYMultiplier / playPositionYDivider;
 
             // Set the play position based on the multipliers and dividers
-            playPosition.x = canvasRectTranform.rect.width * segmentX;
-            playPosition.y = canvasRectTranform.rect.height * segmentY;
+            playPosition.x = canvasRectTransform.rect.width * segmentX;
+            playPosition.y = canvasRectTransform.rect.height * segmentY;
         }
+    }
+
+    private void OnMouseUp()
+    {
+        currentState = 0;
+
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // Check if the mouse is released in the player area
+        if (IsMouseInArea(playerAreaCollider, mousePosition))
+        {
+            Debug.Log("Card dropped on player area");
+            // Handle card played on player
+        }
+        // Check if the mouse is released in the enemy area
+        else if (IsMouseInArea(enemyAreaCollider, mousePosition))
+        {
+            Debug.Log("Card dropped on enemy area");
+            // Handle card played on enemy
+        }
+        else
+        {
+            // Reset position if not dropped in any area
+            rectTransform.localPosition = originalPosition;
+            Debug.Log("Made it to the else statement :/");  
+        }
+        // Reset the card's sibling index to its original value
+        rectTransform.SetSiblingIndex(originalSiblingIndex);
+        playArrow.SetActive(false); // Disable playArrow
+    }
+
+    private bool IsMouseInArea(BoxCollider2D areaCollider, Vector2 mousePosition)
+    {
+        if (areaCollider == null)
+        {
+            Debug.LogError("Area collider is missing!");
+            return false;
+        }
+
+        bool isInArea = areaCollider.OverlapPoint(mousePosition);
+        Debug.Log($"Checking if mouse is in area: {isInArea}, Mouse Position: {mousePosition}");
+        return isInArea;
     }
 }

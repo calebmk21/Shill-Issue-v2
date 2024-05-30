@@ -2,27 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PlayerInput : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float walkSpeed = 2f;
-    private Rigidbody2D rb; 
+    private Rigidbody2D rb;
     private Vector2 direction = Vector2.zero;
     [SerializeField] private InputActionReference act;
     private bool isNPC = false;
     private float timesInteracted = 0;
+    private SceneSwitcher sceneSwitcher;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+        sceneSwitcher = FindObjectOfType<SceneSwitcher>();
+
+        // Load player position if returning to the overworld scene
+        if (sceneSwitcher != null && sceneSwitcher.IsOverworldScene())
+        {
+            transform.position = GameManager.GameData.playerPosition;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         Move(direction.x, direction.y);
+
+        // Check for the "C" key press to change scenes
+        if (Keyboard.current.cKey.wasPressedThisFrame && sceneSwitcher != null)
+        {
+            sceneSwitcher.SwitchScene();
+        }
     }
 
     private void OnEnable()
@@ -46,7 +59,6 @@ public class PlayerInput : MonoBehaviour
         
     }
 
-
     void Move(float x, float y)
     {
         rb.velocity = new Vector2(walkSpeed * x, walkSpeed * y);
@@ -58,11 +70,14 @@ public class PlayerInput : MonoBehaviour
         {
             Debug.Log("interacted");
             timesInteracted++;
-            if  (timesInteracted > 3) //bool that = true when reach end of dialouge
+            if (timesInteracted > 3)
             {
                 Debug.Log("battle start");
-                //load battle scene
-                timesInteracted = 0; //set bool = false or maybe just set it false when you reload this scene
+                if (sceneSwitcher != null)
+                {
+                    sceneSwitcher.StartBattle();
+                }
+                timesInteracted = 0;
             }
         }
     }
@@ -82,6 +97,4 @@ public class PlayerInput : MonoBehaviour
             isNPC = false;
         }
     }
-
-
 }
