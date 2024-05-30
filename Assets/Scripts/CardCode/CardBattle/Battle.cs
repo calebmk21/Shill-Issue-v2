@@ -36,8 +36,17 @@ public class Battle : MonoBehaviour
     public delegate void OnChangeState(GameplayState newState);
     public static event OnChangeState onChangeState;
 
-    public delegate void OnChangeResource();
-    public static event OnChangeResource onChangeResource;
+    public delegate void OnChangePlayerHealth(float currHealth, float maxHealth);
+    public static event OnChangePlayerHealth onChangePlayerHealth;
+
+    public delegate void OnChangeEnemyHealth(float currHealth, float maxHealth);
+    public static event OnChangeEnemyHealth onChangeEnemyHealth;
+
+    public delegate void OnChangePlayerMana(float currMana, float maxMana);
+    public static event OnChangePlayerMana onChangePlayerMana;
+
+    public delegate void OnChangeEnemyMana(float currMana, float maxMana);
+    public static event OnChangeEnemyMana onChangeEnemyMana;
 
     public delegate void OnPause(bool paused);
     public static event OnPause onPause;
@@ -52,7 +61,10 @@ public class Battle : MonoBehaviour
 
     public void UpdateResourceUI()
     {
-        onChangeResource?.Invoke();
+        onChangePlayerHealth?.Invoke(playerHealth, playerMaxHealth);
+        //onChangeEnemyHealth?.Invoke(playerHealth, playerMaxHealth);
+        onChangePlayerMana?.Invoke(currentMana, maxMana);
+        //onChangeEnemyMana?.Invoke(playerHealth, playerMaxHealth);
     }
 
     public void ChangeMana(float amt)

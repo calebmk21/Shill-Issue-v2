@@ -14,7 +14,7 @@ public class Mana : MonoBehaviour
     void Start()
     {
         currentMana = maxMana; 
-        manaBar.SetMaxMana(maxMana); 
+        manaBar.SetMana(currentMana, maxMana); 
     }
 
     public void DecreaseMana(int dec) {

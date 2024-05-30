@@ -7,12 +7,21 @@ public class ManaBar : MonoBehaviour
 {
     public Slider slider;
 
-    public void SetMaxMana(int mana) {
-        slider.maxValue = mana;
+    public void SetMana(float mana, float maxMana = -1) {
+        if (maxMana != -1)
+        {
+            slider.maxValue = maxMana;
+        }
         slider.value = mana; 
     }
 
-    public void SetMana(int mana) {
-        slider.value = mana; 
+    void OnEnable()
+    {
+        Battle.onChangePlayerMana += SetMana;
+    }
+
+    void OnDisable()
+    {
+        Battle.onChangePlayerMana -= SetMana;
     }
 }

@@ -7,12 +7,22 @@ public class HealthBar : MonoBehaviour
 {
     public Slider slider;
 
-    public void SetMaxHealth(int health) {
-        slider.maxValue = health;
-        slider.value = health; 
+    public void SetHealth(float health, float maxHealth = -1)
+    {
+        if (maxHealth != -1)
+        {
+            slider.maxValue = maxHealth;
+        }
+        slider.value = health;
     }
 
-    public void SetHealth(int health) {
-        slider.value = health; 
+    void OnEnable()
+    {
+        Battle.onChangePlayerHealth += SetHealth;
+    }
+
+    void OnDisable()
+    {
+        Battle.onChangePlayerHealth -= SetHealth;
     }
 }
