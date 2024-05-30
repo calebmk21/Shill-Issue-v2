@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class DeckManager : MonoBehaviour
+public class DeckManager : MonoBehaviour, IDataPersistence
 {
     public List<Card> allCards = new List<Card>();
     public int startingHandSize;
@@ -66,5 +66,15 @@ public class DeckManager : MonoBehaviour
             handManager.AddCardToHand(nextCard);
             currentHandSize++;
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.allCards = data.allCards;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.allCards = this.allCards;
     }
 }
