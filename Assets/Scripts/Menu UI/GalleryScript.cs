@@ -8,8 +8,7 @@ public class GalleryScript : MonoBehaviour
     [Header("Panels")] 
     public GameObject baseMenu;
     public GameObject galleryTab;
-    public GameObject settingsTab;
-    public GameObject creditsTab;
+    public GameObject charactersTab;
 
     [Header("Test")] 
     [SerializeField] public bool testBool;
