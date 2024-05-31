@@ -12,7 +12,7 @@ public class HandManager : MonoBehaviour
 
     public float cardSpacing = 100f;
     public float verticalSpacing = 100f;
-    public int maxHandSize = 5;
+    public int maxHandSize = 12;
     public List<GameObject> cardsInHand = new List<GameObject>(); //Hold a list of the card objects in our hand
 
     void Start()

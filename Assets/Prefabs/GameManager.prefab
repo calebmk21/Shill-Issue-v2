@@ -60,6 +60,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2759083899880108201}
     m_Modifications:
+    - target: {fileID: 2478527191486190075, guid: f532f27cf05ca41eca4c9a3b7d71a1e2, type: 3}
+      propertyPath: currentHandSize
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6217327067924305251, guid: f532f27cf05ca41eca4c9a3b7d71a1e2, type: 3}
       propertyPath: m_Name
       value: DeckManager

@@ -30,7 +30,7 @@ public class DeckManager : MonoBehaviour, IDataPersistence
 
         // Set values derp
         maxHandSize = handManager.maxHandSize;
-        startingHandSize = 2;
+        startingHandSize = 4;
         currentHandSize = startingHandSize;
         if(startingHandSize > maxHandSize){
             Debug.Log("Starting hand size is too large");

@@ -72,9 +72,35 @@ public abstract class Enemy
         }
     }
 
+    // Virtual or not completed?
     public void Die()
     {
 
+    }
+
+    public virtual float CurrentHealth{
+        get{return currentHealth;}
+        set{currentHealth = value;}
+    }
+
+    public virtual float MaxHealth{
+        get{return maxHealth;}
+        set{maxHealth = value;}
+    }
+    
+    public virtual float CurrentMana{
+        get{return currentMana;}
+        set{currentMana = value;}
+    }
+
+    public virtual float MaxMana{
+        get{return maxMana;}
+        set{maxMana = value;}
+    }
+
+    public virtual float ManaGain{
+        get{return manaGain;}
+        set{manaGain = value;}
     }
 }
 
