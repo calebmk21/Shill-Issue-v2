@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public OptionsManager OptionsManager { get; private set; }
     public AudioManager AudioManager{ get; private set; }
     public DeckManager DeckManager{ get; private set; }
-
+    
     private int difficulty = 5;
 
     [SerializeField]
