@@ -57,6 +57,7 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObject.LoadData(gameData);
         }
         Debug.Log("Loaded all cards = " + gameData.allCards);
+        Debug.Log("Loaded player position = " + gameData.playerPos);
     }
     public void SaveGame() 
     {
@@ -67,6 +68,7 @@ public class DataPersistenceManager : MonoBehaviour
         }
 
         Debug.Log("Saved all cards = " + gameData.allCards);
+        Debug.Log("Saved player position = " + gameData.playerPos);
 
         //save that data to a file using the data handler
         dataHandler.Save(gameData);

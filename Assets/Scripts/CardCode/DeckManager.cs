@@ -8,7 +8,7 @@ using UnityEngine.Assertions;
 
 public class DeckManager : MonoBehaviour, IDataPersistence
 {
-    public List<Card> allCards = new List<Card>();
+    public SerializableList<Card> allCards = new SerializableList<Card>();
     public int startingHandSize;
 
     private HandManager handManager;

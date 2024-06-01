@@ -8,11 +8,14 @@ using UnityEngine;
 public class GameData
 {
 
-    public List<Card> allCards;
+    public SerializableList<Card> allCards;
+
+    public Vector3 playerPos;
 
     public GameData()
     {
-        this.allCards = new List<Card>();
+        this.allCards = new SerializableList<Card>();
+        playerPos = Vector3.zero;
     }
 
 }

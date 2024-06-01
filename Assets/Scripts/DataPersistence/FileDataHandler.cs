@@ -19,7 +19,8 @@ public class FileDataHandler
 
     public GameData Load()
     {
-        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        //string fullPath = Path.Combine(dataDirPath, dataFileName);
+        string fullPath = dataDirPath + "/" + dataFileName;
 
         GameData loadedData = null;
 
@@ -28,13 +29,14 @@ public class FileDataHandler
             try
             {
                 string dataToLoad = "";
-                using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
                 {
                     using (StreamReader reader = new StreamReader(stream))
                     {
                         dataToLoad = reader.ReadToEnd();
                     }
                 }
+             
                 loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
             }
             catch (Exception e) 

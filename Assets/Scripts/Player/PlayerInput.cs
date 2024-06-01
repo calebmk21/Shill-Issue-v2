@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : MonoBehaviour, IDataPersistence
 {
     [Header("Movement Settings")]
     [SerializeField] private float walkSpeed = 2f;
@@ -51,7 +51,7 @@ public class PlayerInput : MonoBehaviour
     void OnMove(InputValue value)
     {
         direction = value.Get<Vector2>();
-        Debug.Log(direction);
+        //Debug.Log(direction);
     }
 
     void OnInteract()
@@ -97,4 +97,15 @@ public class PlayerInput : MonoBehaviour
             isNPC = false;
         }
     }
+
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPos;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerPos = this.transform.position;
+    }
+
 }
