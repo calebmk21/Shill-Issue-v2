@@ -1,11 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 {
@@ -32,6 +26,8 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
     [SerializeField] private int playPositionXDivider = 4;
     [SerializeField] private float playPositionXMultiplier = 1f;
     [SerializeField] private bool needUpdatePlayPosition = false;
+
+    [SerializeField] private ShillIssue.Card card; // Reference to the Card data
 
     private BoxCollider2D playerAreaCollider;
     private BoxCollider2D enemyAreaCollider;
@@ -200,13 +196,15 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
         if (IsMouseInArea(playerAreaCollider, mousePosition))
         {
             Debug.Log("Card dropped on player area");
-            // Handle card played on player
+            Battle battle = FindObjectOfType<Battle>();
+            battle?.HandleCardPlayedOnPlayer(card);
         }
         // Check if the mouse is released in the enemy area
         else if (IsMouseInArea(enemyAreaCollider, mousePosition))
         {
             Debug.Log("Card dropped on enemy area");
-            // Handle card played on enemy
+            Battle battle = FindObjectOfType<Battle>();
+            battle?.HandleCardPlayedOnEnemy(card);
         }
         else
         {

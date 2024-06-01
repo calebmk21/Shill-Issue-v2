@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using ShillIssue;
 
 public class Battle : MonoBehaviour
 {
@@ -56,13 +58,52 @@ public class Battle : MonoBehaviour
     public delegate void OnPause(bool paused);
     public static event OnPause onPause;
 
+    // UI references
+    public Slider healthSlider;
+    public Slider manaSlider;
+
     void Start()
     {
+        onChangePlayerHealth += UpdateHealthSlider;
+        onChangePlayerMana += UpdateManaSlider;
+
+        // Initialize sliders
+        healthSlider.maxValue = maxHealth;
+        manaSlider.maxValue = maxMana;
+        UpdateHealthSlider(currentHealth, maxHealth);
+        UpdateManaSlider(currentMana, maxMana);
+
+        // Find all game objects with the "Enemy" tag
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+
+        // Iterate through the enemy objects and get their Enemy components
+        foreach (GameObject enemyObject in enemyObjects)
+        {
+            Enemy enemyComponent = enemyObject.GetComponent<Enemy>();
+            if (enemyComponent != null)
+            {
+                enemies.Add(enemyComponent);
+            }
+            else
+            {
+                Debug.LogError("Enemy component not found on an object with the 'Enemy' tag!");
+            }
+        }
+
+
+    }
+
+     void OnDestroy()
+    {
+        onChangePlayerHealth -= UpdateHealthSlider;
+        onChangePlayerMana -= UpdateManaSlider;
     }
 
     void Update()
     {    
     }
+
+    
 
     public void UpdateResourceUI()
     {
@@ -70,6 +111,16 @@ public class Battle : MonoBehaviour
         //onChangeEnemyHealth?.Invoke(playerHealth, playerMaxHealth);
         onChangePlayerMana?.Invoke(currentMana, maxMana);
         //onChangeEnemyMana?.Invoke(playerHealth, playerMaxHealth);
+    }
+
+    private void UpdateHealthSlider(float currHealth, float maxHealth)
+    {
+        healthSlider.value = currHealth;
+    }
+
+    private void UpdateManaSlider(float currMana, float maxMana)
+    {
+        manaSlider.value = currMana;
     }
 
     public void ChangeMana(float amt, Enemy enemy = null)
@@ -147,12 +198,12 @@ public class Battle : MonoBehaviour
 
     public void Die()
     {
-        ;
+        // Add death logic here
     }
 
     public void Win()
     {
-        ;
+        // Add win logic here
     }
 
     public void StartBattle()
@@ -371,12 +422,48 @@ public class Battle : MonoBehaviour
         return card.damageMax <= currentMana;
     }
 
+    public void HandleCardPlayedOnPlayer(ShillIssue.Card card)
+    {
+        // Implement your logic to handle the card being played on the player
+        Debug.Log("HandleCardPlayedOnPlayer called");
+        PlayCard(card, -1); // Assuming -1 means it's not from the hand
+    }
+
+    public void HandleCardPlayedOnEnemy(ShillIssue.Card card)
+    {
+        // Implement your logic to handle the card being played on the enemy
+        Debug.Log("HandleCardPlayedOnEnemy called");
+
+        // Find the enemy target by tag
+        GameObject enemyObject = GameObject.FindGameObjectWithTag("Enemy");
+        if (enemyObject != null)
+        {
+            Enemy enemyTarget = enemyObject.GetComponent<Enemy>();
+            if (enemyTarget != null)
+            {
+                PlayCard(card, -1, enemyTarget); // Pass the enemy target
+            }
+            else
+            {
+                Debug.LogError("Enemy component not found on the enemy object!");
+            }
+        }
+        else
+        {
+            Debug.LogError("No enemy object found with the tag 'Enemy'!");
+        }
+    }
+
+
+
+
     public bool PlayCard(ShillIssue.Card card, int index, Enemy enemy = null)
     {
         if (!IsPlayable(card)) { return false; }
 
+        // Determine the target based on whether enemy is null or not
         Enemy selfTarget = enemy == null ? null : enemies[0];
-        Enemy enemyTarget = enemy == null ? enemies[0] : null;
+        Enemy enemyTarget = enemy == null ? enemies[0] : enemy;
 
         foreach (ShillIssue.CardType cardType in card.cardType)
         {
@@ -388,20 +475,24 @@ public class Battle : MonoBehaviour
                     {
                         damageNum *= 2;
                     }
-                    if (ContainsStatus(ShillIssue.StatusType.Vulnerable, enemyTarget)){
+                    if (ContainsStatus(ShillIssue.StatusType.Vulnerable, enemyTarget))
+                    {
                         damageNum *= 2;
                     }
                     ChangeHealth(damageNum, enemyTarget);
                     break;
                 case ShillIssue.CardType.Heal:
-                    ChangeHealth(Random.Range(card.healMin, card.healMax + 1), selfTarget); // change to heal value;
+                    ChangeHealth(Random.Range(card.healMin, card.healMax + 1), selfTarget);
                     break;
                 case ShillIssue.CardType.Status:
-                    for (int i = 0; i < card.statusEffect.Count; i++){
-                        if (card.statusEffect[i].onOpponent){
+                    for (int i = 0; i < card.statusEffect.Count; i++)
+                    {
+                        if (card.statusEffect[i].onOpponent)
+                        {
                             AddStatus(card.statusEffect[i], enemyTarget);
                         }
-                        else{
+                        else
+                        {
                             AddStatus(card.statusEffect[i], selfTarget);
                         }
                     }
@@ -410,8 +501,8 @@ public class Battle : MonoBehaviour
                     break;
             }
         }
-
-        DiscardCard(index, selfTarget);
         return true;
     }
+
+
 }
