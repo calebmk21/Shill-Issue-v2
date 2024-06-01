@@ -13,6 +13,8 @@ namespace ShillIssue
         public GameManager.CardEnum cardEnum;
         public List<CardType> cardType;
 
+        public int manaCost;
+
         public bool targetSelf = false;
         
         // If we ant to do Summons We could give them health
@@ -24,7 +26,7 @@ namespace ShillIssue
         public int healMin;
         public int healMax;
 
-        public StatusEffect statusEffect;
+        public List<StatusEffect> statusEffect;
 
         public List<AttackType> attackType;
         // Card Sprite
@@ -34,10 +36,17 @@ namespace ShillIssue
     }
 
     [System.Serializable]
-    public struct StatusEffect
+    public class StatusEffect
     {
         public StatusType statusType;
         public int statusNum;
+        public bool onOpponent;
+
+        public StatusEffect(StatusType _statusType, int _statusNum, bool _onOpponent){
+            statusType = _statusType;
+            statusNum = _statusNum;
+            onOpponent = _onOpponent;
+        }
     }
 
     public enum CardType
@@ -57,7 +66,9 @@ namespace ShillIssue
 
     public enum StatusType
     {
+        // x2 damage
         Strength,
+        // Take x2 damage
         Vulnerable
     }
 

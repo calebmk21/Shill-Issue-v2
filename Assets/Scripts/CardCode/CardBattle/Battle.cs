@@ -139,7 +139,7 @@ public class Battle : MonoBehaviour
         }
     }
     
-    private void ChangeGameplayState(GameplayState newState)
+    protected void ChangeGameplayState(GameplayState newState)
     {
         gameplayState = newState;
         onChangeState?.Invoke(gameplayState);
@@ -259,6 +259,39 @@ public class Battle : MonoBehaviour
         EnemyTurn();
     }
 
+    public void AddStatus(ShillIssue.StatusEffect status, Enemy enemy = null){
+        if (enemy == null){
+            bool foundStatus = false;
+
+            for (int i = 0 ; i < statuses.Count ; i++){
+                if (statuses[i].statusType == status.statusType){
+                    statuses[i].statusNum += status.statusNum;
+                    foundStatus = true;
+                    break;
+                }
+            }
+
+            if (!foundStatus){
+                statuses.Add(new ShillIssue.StatusEffect(status.statusType, status.statusNum, status.onOpponent));
+            }
+        }
+        else{
+            bool foundStatus = false;
+
+            for (int i = 0 ; i < statuses.Count ; i++){
+                if (enemy.statuses[i].statusType == status.statusType){
+                    enemy.statuses[i].statusNum += status.statusNum;
+                    foundStatus = true;
+                    break;
+                }
+            }
+
+            if (!foundStatus){
+                enemy.statuses.Add(new ShillIssue.StatusEffect(status.statusType, status.statusNum, status.onOpponent));
+            }
+        }
+    }
+
     public void DecrementStatuses(Enemy enemy = null)
     {
         if (enemy == null)
@@ -364,6 +397,14 @@ public class Battle : MonoBehaviour
                     ChangeHealth(Random.Range(card.healMin, card.healMax + 1), selfTarget); // change to heal value;
                     break;
                 case ShillIssue.CardType.Status:
+                    for (int i = 0; i < card.statusEffect.Count; i++){
+                        if (card.statusEffect[i].onOpponent){
+                            AddStatus(card.statusEffect[i], enemyTarget);
+                        }
+                        else{
+                            AddStatus(card.statusEffect[i], selfTarget);
+                        }
+                    }
                     break;
                 default:
                     break;
