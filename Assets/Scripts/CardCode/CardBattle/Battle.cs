@@ -62,6 +62,23 @@ public class Battle : MonoBehaviour
     public Slider healthSlider;
     public Slider manaSlider;
 
+    public SpriteRenderer playerSpriteRenderer;
+    public SpriteRenderer enemySpriteRenderer;
+
+    public Sprite playerNormalSprite;
+    public Sprite playerDamageSprite;
+    public Sprite playerWinSprite;
+    public Sprite playerLoseSprite;
+
+    public Sprite enemyNormalSprite;
+    public Sprite enemyDamageSprite;
+    public Sprite enemyWinSprite;
+    public Sprite enemyLoseSprite;
+
+    private Coroutine playerSpriteCoroutine;
+    private Coroutine enemySpriteCoroutine;
+
+
     void Start()
     {
         onChangePlayerHealth += UpdateHealthSlider;
@@ -103,7 +120,49 @@ public class Battle : MonoBehaviour
     {    
     }
 
-    
+    public void SetPlayerSprite(Sprite sprite)
+    {
+        playerSpriteRenderer.sprite = sprite;
+    }
+
+    public void SetEnemySprite(Sprite sprite)
+    {
+        enemySpriteRenderer.sprite = sprite;
+    }
+
+    public void ChangePlayerSprite(Sprite sprite, float duration)
+    {
+        if (playerSpriteCoroutine != null)
+        {
+            StopCoroutine(playerSpriteCoroutine);
+        }
+
+        playerSpriteCoroutine = StartCoroutine(ChangePlayerSpriteCoroutine(sprite, duration));
+    }
+
+    public void ChangeEnemySprite(Sprite sprite, float duration)
+    {
+        if (enemySpriteCoroutine != null)
+        {
+            StopCoroutine(enemySpriteCoroutine);
+        }
+
+        enemySpriteCoroutine = StartCoroutine(ChangeEnemySpriteCoroutine(sprite, duration));
+    }
+
+    private IEnumerator ChangePlayerSpriteCoroutine(Sprite sprite, float duration)
+    {
+        SetPlayerSprite(sprite);
+        yield return new WaitForSeconds(duration);
+        SetPlayerSprite(playerNormalSprite); // Change back to normal sprite
+    }
+
+    private IEnumerator ChangeEnemySpriteCoroutine(Sprite sprite, float duration)
+    {
+        SetEnemySprite(sprite);
+        yield return new WaitForSeconds(duration);
+        SetEnemySprite(enemyNormalSprite); // Change back to normal sprite
+    }
 
     public void UpdateResourceUI()
     {
@@ -157,7 +216,6 @@ public class Battle : MonoBehaviour
 
     public void ChangeHealth(float amt, Enemy enemy = null)
     {
-
         if (enemy == null)
         {
             currentHealth += amt;
@@ -170,6 +228,8 @@ public class Battle : MonoBehaviour
             {
                 currentHealth = 0;
                 Die();
+                // Change player sprite to damage sprite
+                ChangePlayerSprite(playerDamageSprite, 1.0f); // Change sprite for 1 second
             }
             onChangePlayerHealth?.Invoke(currentHealth, maxHealth);
         }
@@ -189,6 +249,7 @@ public class Battle : MonoBehaviour
             onChangeEnemyHealth?.Invoke(enemy.currentHealth, enemy.maxHealth);
         }
     }
+
     
     protected void ChangeGameplayState(GameplayState newState)
     {
@@ -199,11 +260,13 @@ public class Battle : MonoBehaviour
     public void Die()
     {
         // Add death logic here
+        ChangePlayerSprite(playerLoseSprite, 3.0f); // Change sprite for 3 seconds
     }
 
     public void Win()
     {
         // Add win logic here
+        ChangePlayerSprite(playerWinSprite, 3.0f); // Change sprite for s seconds
     }
 
     public void StartBattle()
