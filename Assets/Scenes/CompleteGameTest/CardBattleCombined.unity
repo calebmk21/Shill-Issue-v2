@@ -307,9 +307,9 @@ RectTransform:
   - {fileID: 173301399}
   m_Father: {fileID: 570161678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -546.734, y: 449.97}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 169, y: -262}
   m_SizeDelta: {x: 70.998, y: 150.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254026304
@@ -428,8 +428,8 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 256
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 1
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -706,8 +706,18 @@ MonoBehaviour:
   drawPile: []
   hand: []
   discardPile: []
-  healthSlider: {fileID: 1890305236}
-  manaSlider: {fileID: 254026305}
+  healthSlider: {fileID: 0}
+  manaSlider: {fileID: 0}
+  playerSpriteRenderer: {fileID: 0}
+  enemySpriteRenderer: {fileID: 0}
+  playerNormalSprite: {fileID: 0}
+  playerDamageSprite: {fileID: 0}
+  playerWinSprite: {fileID: 0}
+  playerLoseSprite: {fileID: 0}
+  enemyNormalSprite: {fileID: 0}
+  enemyDamageSprite: {fileID: 0}
+  enemyWinSprite: {fileID: 0}
+  enemyLoseSprite: {fileID: 0}
 --- !u!1 &1026887973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,10 +1575,10 @@ RectTransform:
   - {fileID: 105879892}
   m_Father: {fileID: 570161678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -165.52768, y: 611.2964}
-  m_SizeDelta: {x: 141.5404, y: 24.4974}
+  m_AnchorMin: {x: 0.5213125, y: 1}
+  m_AnchorMax: {x: 0.5213125, y: 1}
+  m_AnchoredPosition: {x: -397, y: -80}
+  m_SizeDelta: {x: 141.5404, y: 24.497398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1890305235
 MonoBehaviour:
