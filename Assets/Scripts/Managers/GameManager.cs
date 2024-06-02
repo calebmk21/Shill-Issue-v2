@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     public List<ShillIssue.Card> deck = new List<ShillIssue.Card>();
 
+    public Battle currentBattle;
     public EnemyEnum currentEnemy = EnemyEnum.NONE;
 
     public enum CardEnum
