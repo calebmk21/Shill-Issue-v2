@@ -307,9 +307,9 @@ RectTransform:
   - {fileID: 173301399}
   m_Father: {fileID: 570161678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -546.734, y: 449.97}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 169, y: -262}
   m_SizeDelta: {x: 70.998, y: 150.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254026304
@@ -428,8 +428,8 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 256
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 1
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -706,18 +706,18 @@ MonoBehaviour:
   drawPile: []
   hand: []
   discardPile: []
-  healthSlider: {fileID: 1890305236}
-  manaSlider: {fileID: 254026305}
-  playerSpriteRenderer: {fileID: 1068946836}
-  enemySpriteRenderer: {fileID: 1615570470}
-  playerNormalSprite: {fileID: -517121705, guid: 74f32df85e62845919a8e578e01ff507, type: 3}
-  playerDamageSprite: {fileID: 868897268, guid: 74f32df85e62845919a8e578e01ff507, type: 3}
-  playerWinSprite: {fileID: -424591668, guid: 74f32df85e62845919a8e578e01ff507, type: 3}
-  playerLoseSprite: {fileID: 992278638, guid: 74f32df85e62845919a8e578e01ff507, type: 3}
-  enemyNormalSprite: {fileID: -423906908, guid: fbc6397cba1284e94995f37a74230e45, type: 3}
-  enemyDamageSprite: {fileID: 1574136556, guid: fbc6397cba1284e94995f37a74230e45, type: 3}
-  enemyWinSprite: {fileID: 1325030337, guid: fbc6397cba1284e94995f37a74230e45, type: 3}
-  enemyLoseSprite: {fileID: -257735917, guid: fbc6397cba1284e94995f37a74230e45, type: 3}
+  healthSlider: {fileID: 0}
+  manaSlider: {fileID: 0}
+  playerSpriteRenderer: {fileID: 0}
+  enemySpriteRenderer: {fileID: 0}
+  playerNormalSprite: {fileID: 0}
+  playerDamageSprite: {fileID: 0}
+  playerWinSprite: {fileID: 0}
+  playerLoseSprite: {fileID: 0}
+  enemyNormalSprite: {fileID: 0}
+  enemyDamageSprite: {fileID: 0}
+  enemyWinSprite: {fileID: 0}
+  enemyLoseSprite: {fileID: 0}
 --- !u!1 &1026887973
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,7 +903,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -424591668, guid: 74f32df85e62845919a8e578e01ff507, type: 3}
+  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1037,7 +1037,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.37, y: 4.87}
+    oldSize: {x: 1, y: 2}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1189,7 +1189,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -1844535627, guid: 1022a235e147a461189c1a100942e225, type: 3}
+  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1251,7 +1251,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.06, y: 4.61}
+    oldSize: {x: 1, y: 2}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1575,10 +1575,10 @@ RectTransform:
   - {fileID: 105879892}
   m_Father: {fileID: 570161678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -165.52768, y: 611.2964}
-  m_SizeDelta: {x: 141.5404, y: 24.4974}
+  m_AnchorMin: {x: 0.5213125, y: 1}
+  m_AnchorMax: {x: 0.5213125, y: 1}
+  m_AnchoredPosition: {x: -397, y: -80}
+  m_SizeDelta: {x: 141.5404, y: 24.497398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1890305235
 MonoBehaviour:

@@ -196,15 +196,17 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
         if (IsMouseInArea(playerAreaCollider, mousePosition))
         {
             Debug.Log("Card dropped on player area");
-            Battle battle = FindObjectOfType<Battle>();
-            battle?.HandleCardPlayedOnPlayer(card);
+            //Battle battle = FindObjectOfType<Battle>();
+            //battle?.HandleCardPlayedOnPlayer(card);
+            GameManager._instance.currentBattle.PlayCard(card);
         }
         // Check if the mouse is released in the enemy area
         else if (IsMouseInArea(enemyAreaCollider, mousePosition))
         {
             Debug.Log("Card dropped on enemy area");
-            Battle battle = FindObjectOfType<Battle>();
-            battle?.HandleCardPlayedOnEnemy(card);
+            //Battle battle = FindObjectOfType<Battle>();
+            //battle?.HandleCardPlayedOnEnemy(card);
+            GameManager._instance.currentBattle.PlayCard(card);
         }
         else
         {

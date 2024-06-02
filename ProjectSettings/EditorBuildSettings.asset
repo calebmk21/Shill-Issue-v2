@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CompleteGameTest/CardBattleCombined.unity
     guid: 0023dfdd9576947a6bcf737b13d96fcf
+  - enabled: 1
+    path: Assets/Scenes/MovementTest.unity
+    guid: c1154b240e386ab47bc70d6942eddd0b
   m_configObjects: {}

@@ -56,6 +56,7 @@ public class SceneSwitcher : MonoBehaviour
         {
             GameManager.GameData.playerPosition = playerInput.transform.position;
         }
+        GameManager._instance.currentEnemy = EnemyEnum.ExampleEnemy;
         SceneManager.LoadScene("CardBattleCombined");
     }
 
