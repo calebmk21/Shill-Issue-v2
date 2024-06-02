@@ -82,6 +82,7 @@ public class Battle : MonoBehaviour
 
     void Start()
     {
+        GameManager._instance.currentBattle = this;
         ChangeGameplayState(GameplayState.NOT_PLAYING);
 
         object[] constructorArgs = new object[] { this };
@@ -494,48 +495,48 @@ public class Battle : MonoBehaviour
         return card.damageMax <= currentMana;
     }
 
-    public void HandleCardPlayedOnPlayer(ShillIssue.Card card)
-    {
-        // Implement your logic to handle the card being played on the player
-        Debug.Log("HandleCardPlayedOnPlayer called");
-        PlayCard(card, -1); // Assuming -1 means it's not from the hand
-    }
+    //public void HandleCardPlayedOnPlayer(ShillIssue.Card card)
+    //{
+    //    // Implement your logic to handle the card being played on the player
+    //    Debug.Log("HandleCardPlayedOnPlayer called");
+    //    PlayCard(card, -1); // Assuming -1 means it's not from the hand
+    //}
 
-    public void HandleCardPlayedOnEnemy(ShillIssue.Card card)
-    {
-        // Implement your logic to handle the card being played on the enemy
-        Debug.Log("HandleCardPlayedOnEnemy called");
+    //public void HandleCardPlayedOnEnemy(ShillIssue.Card card)
+    //{
+    //    // Implement your logic to handle the card being played on the enemy
+    //    Debug.Log("HandleCardPlayedOnEnemy called");
 
-        // Find the enemy target by tag
-        GameObject enemyObject = GameObject.FindGameObjectWithTag("Enemy");
-        if (enemyObject != null)
-        {
-            Enemy enemyTarget = enemyObject.GetComponent<Enemy>();
-            if (enemyTarget != null)
-            {
-                PlayCard(card, -1, enemyTarget); // Pass the enemy target
-            }
-            else
-            {
-                Debug.LogError("Enemy component not found on the enemy object!");
-            }
-        }
-        else
-        {
-            Debug.LogError("No enemy object found with the tag 'Enemy'!");
-        }
-    }
-
-
+    //    // Find the enemy target by tag
+    //    GameObject enemyObject = GameObject.FindGameObjectWithTag("Enemy");
+    //    if (enemyObject != null)
+    //    {
+    //        Enemy enemyTarget = enemyObject.GetComponent<Enemy>();
+    //        if (enemyTarget != null)
+    //        {
+    //            PlayCard(card, -1, enemyTarget); // Pass the enemy target
+    //        }
+    //        else
+    //        {
+    //            Debug.LogError("Enemy component not found on the enemy object!");
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("No enemy object found with the tag 'Enemy'!");
+    //    }
+    //}
 
 
-    public bool PlayCard(ShillIssue.Card card, int index, Enemy enemy = null)
+
+
+    public bool PlayCard(ShillIssue.Card card, Enemy enemy = null)
     {
         if (!IsPlayable(card)) { return false; }
 
         // Determine the target based on whether enemy is null or not
         Enemy selfTarget = enemy == null ? null : battleOpponent;
-        Enemy enemyTarget = enemy == null ? battleOpponent : enemy;
+        Enemy enemyTarget = enemy == null ? battleOpponent : null;
 
         foreach (ShillIssue.CardType cardType in card.cardType)
         {
