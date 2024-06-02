@@ -24,6 +24,7 @@ public class Battle : MonoBehaviour
 
     public int handSize = 5;
     public float manaGain = 10f;
+    public int cardsLeftThisTurn = 5;
 
     public List<ShillIssue.StatusEffect> statuses = new List<ShillIssue.StatusEffect>();
 

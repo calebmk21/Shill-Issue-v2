@@ -22,11 +22,12 @@ public abstract class Enemy
 
     // Maximum cards you can get on one turn
     public int handSize;
+    public int cardsLeftThisTurn;
 
     // List of status that are currently afflicting enemy
     public List<ShillIssue.StatusEffect> statuses = new List<ShillIssue.StatusEffect>();
 
-    public List<ShillIssue.Card> deck = new List<ShillIssue.Card>();
+    public List<ShillIssue.Card>  deck= new List<ShillIssue.Card>();
 
     public List<ShillIssue.Card> drawPile = new List<ShillIssue.Card>();
     public List<ShillIssue.Card> hand = new List<ShillIssue.Card>();
@@ -47,6 +48,8 @@ public abstract class Enemy
         manaGain = 30f;
 
         handSize = 5;
+
+        cardsLeftThisTurn = 5;
 
         foreach (ShillIssue.Card card in deck)
         {
@@ -199,11 +202,13 @@ public abstract class Enemy
         float highestDamageCard = -1f;
         for(int i = 0; i < hand.Count; i++){
             ShillIssue.Card card = hand[i];
-            float currentDamage = (card.damageMin + card.damageMax) / 2f;
-            if (currentDamage > highestDamageCard){
-                if(currentMana >= card.manaCost){
-                    highestDamageCard = currentDamage;
-                    index = i;
+            if(card.cardType.Contains(ShillIssue.CardType.Dmg)){
+                float currentDamage = (card.damageMin + card.damageMax) / 2f;
+                if (currentDamage > highestDamageCard){
+                    if(currentMana >= card.manaCost){
+                        highestDamageCard = currentDamage;
+                        index = i;
+                    }
                 }
             }
         }
@@ -218,11 +223,13 @@ public abstract class Enemy
         float lowestDamageCard = -1f;
         for(int i = 0; i < hand.Count; i++){
             ShillIssue.Card card = hand[i];
-            float currentDamage = (card.damageMin + card.damageMax) / 2f;
-            if (currentDamage < lowestDamageCard){
-                if(currentMana >= card.manaCost){
-                    lowestDamageCard = currentDamage;
-                    index = i;
+            if(card.cardType.Contains(ShillIssue.CardType.Dmg)){
+                float currentDamage = (card.damageMin + card.damageMax) / 2f;
+                if (currentDamage < lowestDamageCard){
+                    if(currentMana >= card.manaCost){
+                        lowestDamageCard = currentDamage;
+                        index = i;
+                    }
                 }
             }
         }
@@ -289,7 +296,30 @@ public abstract class Enemy
         if(index > -1){ return index; }
         return -1;
     }
+
+    // Return index of card with lwoest leaht, -1 if error
+    public virtual int GetLowestHealCard(){
+        int index = -1;
+        float highestHealCard = -1;
+        for(int i = 0; i < hand.Count; i++){
+            ShillIssue.Card card = hand[i];
+            if(card.cardType.Contains(ShillIssue.CardType.Heal)){
+                float currentHealing = (float)(card.healMax + card.healMin) / 2f;
+                if(currentHealing < highestHealCard){
+                    if(currentMana >= card.manaCost){
+                        highestHealCard = currentHealing;
+                        index = i;
+                    }
+                }
+            }
+        }
+
+        if(index > -1){ return index; }
+        return -1;
+    }
 }
+
+
 
 public class EnemyAction
 {
