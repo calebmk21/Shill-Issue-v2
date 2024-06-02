@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using ShillIssue;
+using System;
 
 public class Battle : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class Battle : MonoBehaviour
 
     // gameplay stuffs
 
-    public List<Enemy> enemies = new List<Enemy>();
+    public Enemy battleOpponent;
 
     public List<ShillIssue.Card> drawPile = new List<ShillIssue.Card>();
     public List<ShillIssue.Card> hand = new List<ShillIssue.Card>();
@@ -81,39 +82,50 @@ public class Battle : MonoBehaviour
 
     void Start()
     {
-        onChangePlayerHealth += UpdateHealthSlider;
-        onChangePlayerMana += UpdateManaSlider;
+        ChangeGameplayState(GameplayState.NOT_PLAYING);
 
-        // Initialize sliders
-        healthSlider.maxValue = maxHealth;
-        manaSlider.maxValue = maxMana;
-        UpdateHealthSlider(currentHealth, maxHealth);
-        UpdateManaSlider(currentMana, maxMana);
+        object[] constructorArgs = new object[] { this };
+        battleOpponent = (Enemy)Activator.CreateInstance(GameManager._instance.enemyDict[GameManager._instance.currentEnemy].enemyType, constructorArgs);
 
-        // Find all game objects with the "Enemy" tag
-        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        SetEnemySprite(GameManager._instance.enemyDict[GameManager._instance.currentEnemy].enemySprite);
 
-        // Iterate through the enemy objects and get their Enemy components
-        foreach (GameObject enemyObject in enemyObjects)
-        {
-            Enemy enemyComponent = enemyObject.GetComponent<Enemy>();
-            if (enemyComponent != null)
-            {
-                enemies.Add(enemyComponent);
-            }
-            else
-            {
-                Debug.LogError("Enemy component not found on an object with the 'Enemy' tag!");
-            }
-        }
+        UpdateResourceUI();
+
+        StartBattle();
+
+        //onChangePlayerHealth += UpdateHealthSlider;
+        //onChangePlayerMana += UpdateManaSlider;
+
+        //// Initialize sliders
+        //healthSlider.maxValue = maxHealth;
+        //manaSlider.maxValue = maxMana;
+        //UpdateHealthSlider(currentHealth, maxHealth);
+        //UpdateManaSlider(currentMana, maxMana);
+
+        //// Find all game objects with the "Enemy" tag
+        //GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+
+        //// Iterate through the enemy objects and get their Enemy components
+        //foreach (GameObject enemyObject in enemyObjects)
+        //{
+        //    Enemy enemyComponent = enemyObject.GetComponent<Enemy>();
+        //    if (enemyComponent != null)
+        //    {
+        //        enemies.Add(enemyComponent);
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("Enemy component not found on an object with the 'Enemy' tag!");
+        //    }
+        //}
 
 
     }
 
      void OnDestroy()
     {
-        onChangePlayerHealth -= UpdateHealthSlider;
-        onChangePlayerMana -= UpdateManaSlider;
+        //onChangePlayerHealth -= UpdateHealthSlider;
+        //onChangePlayerMana -= UpdateManaSlider;
     }
 
     void Update()
@@ -167,20 +179,20 @@ public class Battle : MonoBehaviour
     public void UpdateResourceUI()
     {
         onChangePlayerHealth?.Invoke(currentHealth, maxHealth);
-        //onChangeEnemyHealth?.Invoke(playerHealth, playerMaxHealth);
+        onChangeEnemyHealth?.Invoke(battleOpponent.currentHealth, battleOpponent.maxHealth);
         onChangePlayerMana?.Invoke(currentMana, maxMana);
-        //onChangeEnemyMana?.Invoke(playerHealth, playerMaxHealth);
+        onChangeEnemyMana?.Invoke(battleOpponent.currentMana, battleOpponent.maxMana);
     }
 
-    private void UpdateHealthSlider(float currHealth, float maxHealth)
-    {
-        healthSlider.value = currHealth;
-    }
+    //private void UpdateHealthSlider(float currHealth, float maxHealth)
+    //{
+    //    healthSlider.value = currHealth;
+    //}
 
-    private void UpdateManaSlider(float currMana, float maxMana)
-    {
-        manaSlider.value = currMana;
-    }
+    //private void UpdateManaSlider(float currMana, float maxMana)
+    //{
+    //    manaSlider.value = currMana;
+    //}
 
     public void ChangeMana(float amt, Enemy enemy = null)
     {
@@ -472,10 +484,7 @@ public class Battle : MonoBehaviour
 
     public void EnemyTurn()
     {
-        foreach (Enemy enemy in enemies)
-        {
-            enemy.DoTurn();
-        }
+        battleOpponent.DoTurn();
 
         StartTurn();
     }
@@ -525,8 +534,8 @@ public class Battle : MonoBehaviour
         if (!IsPlayable(card)) { return false; }
 
         // Determine the target based on whether enemy is null or not
-        Enemy selfTarget = enemy == null ? null : enemies[0];
-        Enemy enemyTarget = enemy == null ? enemies[0] : enemy;
+        Enemy selfTarget = enemy == null ? null : battleOpponent;
+        Enemy enemyTarget = enemy == null ? battleOpponent : enemy;
 
         foreach (ShillIssue.CardType cardType in card.cardType)
         {

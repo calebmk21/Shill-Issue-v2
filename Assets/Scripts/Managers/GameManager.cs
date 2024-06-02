@@ -16,8 +16,15 @@ public class GameManager : MonoBehaviour
     private List<ShillIssue.Card> cardDictSetup = new List<ShillIssue.Card>();
     public Dictionary<CardEnum, ShillIssue.Card> entityObjectDict = new Dictionary<CardEnum, ShillIssue.Card>();
 
+    public List<EnemySpriteMatch> enemySpriteMatches = new List<EnemySpriteMatch>();
+
+    public Dictionary<EnemyEnum, EnemyDataBundle> enemyDict = new Dictionary<EnemyEnum, EnemyDataBundle>() {
+        { EnemyEnum.ExampleEnemy, new EnemyDataBundle(typeof(Enemy), null) }
+    };
+
     public List<ShillIssue.Card> deck = new List<ShillIssue.Card>();
 
+    public EnemyEnum currentEnemy = EnemyEnum.NONE;
 
     public enum CardEnum
     {
@@ -40,6 +47,11 @@ public class GameManager : MonoBehaviour
         foreach (ShillIssue.Card card in cardDictSetup)
         {
             entityObjectDict.Add(card.cardEnum, card);
+        }
+
+        foreach (EnemySpriteMatch match in enemySpriteMatches)
+        {
+            enemyDict[match.enemy].enemySprite = match.sprite;
         }
     }
 
@@ -90,4 +102,11 @@ public class GameManager : MonoBehaviour
         get{ return difficulty; }
         set { difficulty = value; }
     }
+}
+
+[System.Serializable]
+public class EnemySpriteMatch
+{
+    public EnemyEnum enemy;
+    public Sprite sprite;
 }
