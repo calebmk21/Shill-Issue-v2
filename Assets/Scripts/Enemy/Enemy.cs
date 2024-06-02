@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using System;
+
 
 public abstract class Enemy
 {
@@ -300,6 +302,23 @@ public class EnemyAction
         index = _index;
     }
 
+}
+
+public class EnemyDataBundle
+{
+    public Type enemyType;
+    public Sprite enemySprite;
+
+    public EnemyDataBundle(Type _enemyType, Sprite _enemySprite)
+    {
+        //if (!typeof(Enemy).IsAssignableFrom(enemyType))
+        //{
+        //    throw new ArgumentException("Type must be a subclass of Enemy");
+        //}
+
+        enemyType = _enemyType;
+        enemySprite = _enemySprite;
+    }
 }
 
 public enum EnemyEnum

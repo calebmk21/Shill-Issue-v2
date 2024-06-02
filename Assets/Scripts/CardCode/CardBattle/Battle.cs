@@ -542,7 +542,7 @@ public class Battle : MonoBehaviour
             switch (cardType)
             {
                 case ShillIssue.CardType.Dmg:
-                    float damageNum = Random.Range(card.damageMin, card.damageMax + 1);
+                    float damageNum = UnityEngine.Random.Range(card.damageMin, card.damageMax + 1);
                     if (ContainsStatus(ShillIssue.StatusType.Strength, selfTarget))
                     {
                         damageNum *= 2;
@@ -554,7 +554,7 @@ public class Battle : MonoBehaviour
                     ChangeHealth(damageNum, enemyTarget);
                     break;
                 case ShillIssue.CardType.Heal:
-                    ChangeHealth(Random.Range(card.healMin, card.healMax + 1), selfTarget);
+                    ChangeHealth(UnityEngine.Random.Range(card.healMin, card.healMax + 1), selfTarget);
                     break;
                 case ShillIssue.CardType.Status:
                     for (int i = 0; i < card.statusEffect.Count; i++)
