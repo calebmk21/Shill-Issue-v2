@@ -172,8 +172,13 @@ public abstract class Enemy
         switch (action.actionType)
         {
             case ActionEnum.PlayCard:
+<<<<<<< Updated upstream
                 battle.ChangeMana(-hand[action.index].manaCost, this);
                 battle.PlayCard(hand[action.index], action.index, this);
+=======
+                // changed from battle.PlayCard(hand[action.index], action.index, this);
+                battle.PlayCard(hand[action.index], this);
+>>>>>>> Stashed changes
                 break;
             case ActionEnum.DiscardCard:
                 battle.DiscardCard(action.index, this);
