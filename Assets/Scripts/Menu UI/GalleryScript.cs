@@ -36,6 +36,11 @@ public class GalleryScript : MonoBehaviour
     public void gallerySwap()
     {
         currentPanel = GameObject.FindGameObjectWithTag("CardPanel");
+        if (currentPanel != null)
+        {
+            currentPanel.SetActive(false);
+        }
+        cardFace.SetActive(true);
     }
     
     
