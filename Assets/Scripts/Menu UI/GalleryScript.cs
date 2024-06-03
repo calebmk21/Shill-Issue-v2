@@ -35,7 +35,7 @@ public class GalleryScript : MonoBehaviour
 
     public void gallerySwap()
     {
-        
+        currentPanel = GameObject.FindGameObjectWithTag("CardPanel");
     }
     
     
