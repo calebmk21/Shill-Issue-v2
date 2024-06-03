@@ -12,13 +12,17 @@ public class PlayerInput : MonoBehaviour, IDataPersistence
     [SerializeField] private InputActionReference act;
     private bool isNPC = false;
     private EnemyEnum enemyType;
-    private float timesInteracted = 0;
+    private int timesInteracted = 0;
     private SceneSwitcher sceneSwitcher;
+    private VisualNovel visualNovel; 
+    private string[] dialogueNode = {"Battle_1", "Battle_2", "Battle_3", "Battle_4"}; 
+    private bool canBattle = false; 
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sceneSwitcher = FindObjectOfType<SceneSwitcher>();
+        visualNovel = FindObjectOfType<VisualNovel>();
 
         // Load player position if returning to the overworld scene
         if (sceneSwitcher != null && sceneSwitcher.IsOverworldScene())
@@ -70,15 +74,19 @@ public class PlayerInput : MonoBehaviour, IDataPersistence
         if (context.performed && isNPC)
         {
             Debug.Log("interacted");
-            timesInteracted++;
-            if (timesInteracted > 3)
-            {
-                Debug.Log("battle start");
-                if (sceneSwitcher != null)
+            if (visualNovel != null && dialogueNode.Length > timesInteracted) {
+                if (canBattle && sceneSwitcher != null)
                 {
+                    Debug.Log("battle start");
                     sceneSwitcher.StartBattle(enemyType);
+                    canBattle = false; 
                 }
-                timesInteracted = 0;
+                else {
+                    // change this to be programmatic based on NPC
+                    visualNovel.StartDialogue(dialogueNode[timesInteracted]);
+                    timesInteracted++;
+                    canBattle = true; 
+                }
             }
         }
     }

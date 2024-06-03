@@ -9,7 +9,8 @@ public class VisualNovel : MonoBehaviour
 {
     private DialogueRunner dialogueRunner;
     public Dictionary<string, Character> characters = new Dictionary<string, Character>();
-    public Image component;
+    public Image characterSprite;
+    public Image backgroundSprite;
     public Character diego; 
     public Character emCee;
     public Character umeko;
@@ -27,51 +28,60 @@ public class VisualNovel : MonoBehaviour
         dialogueRunner.StartDialogue(node); 
     }
 
+    public void PauseGame() {
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame() {
+        Time.timeScale = 1f;
+    }
+
     [YarnCommand("show_sprite")]
     public void Show() {
-        component.enabled = true;
+        characterSprite.enabled = true;
     }
 
     [YarnCommand("hide_sprite")]
     public void Hide() {
-        component.enabled = false; 
+        characterSprite.enabled = false; 
+    }
+
+    [YarnCommand("show_background")]
+    public void ShowBackground() {
+        backgroundSprite.enabled = true;
+    }
+
+    [YarnCommand("hide_background")]
+    public void HideBackground() {
+        backgroundSprite.enabled = false; 
     }
 
     // use <<change_character characterName mood>>
     [YarnCommand("change_character")]
     public void ChangeCharacter(string characterName, string mood)
     {
-        // Debug.Log(parameters);
-        // if (parameters.Length != 2)
-        // {
-        //     Debug.LogError("error: 2 params only");
-        //     return;
-        // }
-
-        // string characterName = parameters[0];
-        // string mood = parameters[1];
         Vector2 spriteSize = Vector2.zero; 
 
         if (characters.ContainsKey(characterName))
         {
             if (mood == "neutral")
             {
-                component.sprite = characters[characterName].neutral;
+                characterSprite.sprite = characters[characterName].neutral;
                 spriteSize = characters[characterName].neutral.bounds.size;
             }
             else if (mood == "happy")
             {
-                component.sprite = characters[characterName].happy;
+                characterSprite.sprite = characters[characterName].happy;
                 spriteSize = characters[characterName].happy.bounds.size;
             }
             else if (mood == "sad")
             {
-                component.sprite = characters[characterName].sad;
+                characterSprite.sprite = characters[characterName].sad;
                 spriteSize = characters[characterName].sad.bounds.size;
             }
             else if (mood == "angry")
             {
-                component.sprite = characters[characterName].angry;
+                characterSprite.sprite = characters[characterName].angry;
                 spriteSize = characters[characterName].angry.bounds.size;
             }
             else
@@ -80,7 +90,7 @@ public class VisualNovel : MonoBehaviour
             }
 
             // resize
-            RectTransform rectTransform = component.GetComponent<RectTransform>();
+            RectTransform rectTransform = characterSprite.GetComponent<RectTransform>();
             if (rectTransform != null)
             {
                 rectTransform.sizeDelta = spriteSize * 300;

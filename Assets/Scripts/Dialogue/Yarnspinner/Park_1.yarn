@@ -1,12 +1,22 @@
-﻿title: Park_1
+﻿title: Battle_1
 tags: Park_1
 ---
-<<hide_sprite DialogueSystem>>
+
+<<show_background DialogueSystem>>
 Em Cee flashes back to reality. It's a beautiful day outside. Birds are singing, Flowers are blooming... On days like these, kids like Em Cee… Should be going to going away parties.
 
 Em Cee is in a park with lots of greenery. A few picnic tables are set up with balloons, streamers, and other party decorations. Clearly, somebody's celebrating something. 
-<<show_sprite DialogueSystem>>
+-> Read the dialogue.
+    <<jump PreDiegoBullying>>
+-> Skip to card battle. 
 
+<<hide_background DialogueSystem>>
+===
+
+title: PreDiegoBullying
+---
+
+<<show_sprite DialogueSystem>>
 <<change_character DialogueSystem Diego happy>>
 Diego: You're early!
 
@@ -80,7 +90,7 @@ Diego: Going to play some Shill Issue? Hell yeah!
 Em hugs Diego.  
 <<show_sprite DialogueSystem>>
 
-<<change_character DialogueSystem Umeko sad>>
+<<change_character DialogueSystem Umeko angry>>
 Umeko: ... 
 
 <<change_character DialogueSystem Em happy>>
@@ -109,13 +119,15 @@ Diego: Do you remember when I gave you your first card?
 Em: Like it was yesterday. 
 
 <<change_character DialogueSystem Diego neutral>>
-Diego: We were in second grade. At the time, I was obsessed with Shill Issue. I begged my mom for all of the card decks, and well… she wanted to spoil me. Y'know, 'cause of my dad? By the time we met, I had more cards than I knew what to do with, and nobody to play with. You were the new kid, so I knew you didn't have other kids to play with. I needed to indoctrinate someone. That's why I gave you the starter deck and taught you how to play Shill Issue. It was all self-centered, haha. 
+Diego: We were in second grade. At the time, I was obsessed with Shill Issue. I begged my mom for all of the card decks, and well… she wanted to spoil me. Y'know, 'cause of my dad? 
+Diego: By the time we met, I had more cards than I knew what to do with, and nobody to play with. You were the new kid, so I knew you didn't have other kids to play with. I needed to indoctrinate someone. That's why I gave you the starter deck and taught you how to play Shill Issue.
 
 <<change_character DialogueSystem Em neutral>>
 Em: But still… I owe you a lot. You got me into the game in the first place. All my TCG Championship trophies… My job at Studio… I owe you so much.
 
 <<change_character DialogueSystem Diego neutral>>
-Diego: You really don't… Anyway, I still have the cards from all those years ago. After you lost your card deck, I came home to find these. I thought, “I'm never going to use these.” You know I don't really play anymore. It's far more meaningful for you to have them. I know how much your card deck meant to you. I wanted you to have these as a memento of me when you leave for your new job. My entire card collection.
+Diego: You really don't… Anyway, I still have the cards from all those years ago. After you lost your card deck, I came home to find these. I thought, “I'm never going to use these.” 
+Diego: You know I don't really play anymore. It's far more meaningful for you to have them. I wanted you to have these as a memento of me when you leave for your new job. My entire card collection.
 
 <<change_character DialogueSystem Em angry>>
 Em: You mean it? Diego, the monetary value of these…
@@ -131,4 +143,7 @@ Diego: In friendship. And… in one last match?
 
 <<change_character DialogueSystem Em neutral>>
 Em: You're on.
+
+<<hide_sprite DialogueSystem>>
+<<hide_background DialogueSystem>>
 ===

@@ -1,11 +1,20 @@
-﻿title: Park_3
+﻿title: Battle_3
 tags: Park_3
 ---
 
+<<show_background DialogueSystem>>
 <<hide_sprite DialogueSystem>>
 Em beats Yu easily. 
-<<show_sprite DialogueSystem>>
+    -> Read the dialogue.
+        <<jump Yu_Post_Battle>>
+    -> Skip. 
+<<hide_background DialogueSystem>>
+===
 
+title: Yu_Post_Battle
+--- 
+<<show_background DialogueSystem>>
+<<show_sprite DialogueSystem>>
 <<change_character DialogueSystem Em happy>>
 Em: Well, that was fun.
 
@@ -123,4 +132,5 @@ Yu: Anything to spite Em.
 <<change_character DialogueSystem Em angry>>
 Em: Hey… 
 
+<<hide_background DialogueSystem>>
 ===

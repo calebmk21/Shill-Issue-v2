@@ -1,9 +1,19 @@
-﻿title: Park_4
+﻿title: Battle_4
 tags:
 ---
 
 <<hide_sprite DialogueSystem>>
+<<show_background DialogueSystem>>
 After a tough match, Em beats Umeko. However, something seems off. Umeko is a lot less composed than usual. She seems almost on the brink of tears...
+    -> Read the dialogue.
+        <<jump Umeko_Sadge>>
+    -> Skip. 
+<<hide_background DialogueSystem>>
+===
+
+title: Umeko_Sadge
+---
+<<show_background DialogueSystem>>
 <<show_sprite DialogueSystem>>
 
 <<change_character DialogueSystem Umeko angry>>
@@ -264,4 +274,6 @@ Everyone digs in. After cake, everyone sits around the table and laughs about ol
 <<show_sprite DialogueSystem>>
 
 AT THE TRAIN STATION. Em sits on the train. {$HeShe} looks out the window and waves back to their friends. The train starts up. Slowly, Em's friends get smaller and smaller as the train speeds up. And though it feels like a bittersweet end, Em knows that it's just the beginning of a new adventure. 
+<<hide_background DialogueSystem>>
+
 ===

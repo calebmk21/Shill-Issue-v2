@@ -38,6 +38,14 @@ It's about 6 PM in a quiet town where not much happens. Em Cee, our protagonist,
 
 The only problem? Studio's headquarters are about 300 miles from Em's hometown, which {$heshe} has never left before...
 
+-> Read the dialogue.
+    <<jump Dialogue>>
+-> Explore the world. 
+    <<hide_background DialogueSystem>>
+===
+
+title: Dialogue
+---
 <<show_sprite DialogueSystem>>
 <<change_character DialogueSystem Em angry>>
 Em: Ah, I'm so nervous.
@@ -292,5 +300,6 @@ Diego: I'm going to plan a going away party for you. I'll invite everyone: you, 
 Em: I don't know about that…
 
 <<hide_sprite DialogueSystem>>
+<<hide_background DialougeSystem>>
 
 ===

@@ -1,9 +1,20 @@
-﻿title: Park_2
+﻿title: Battle_2
 tags: Park_2
 ---
+
+<<show_background DialogueSystem>>
 <<hide_sprite DialogueSystem>>
 AFTER THE MATCH. Em beat Diego... miserably. 
+    -> Read the dialogue.
+        <<jump Diego_Destroyed>>
+    -> Skip. 
+<<hide_background DialogueSystem>>
+===
+
+title: Diego_Destroyed
+---
 <<show_sprite DialogueSystem>>
+<<show_background DialogueSystem>>
 
 <<change_character DialogueSystem Diego neutral>>
 Diego: gg no re.
@@ -92,5 +103,7 @@ Em: Please? For your older sibling? I'm going away you know…
 
 <<change_character DialogueSystem Yu angry>>
 Yu: Fiiiine. 
+
+<<hide_background DialogueSystem>>
 
 ===
