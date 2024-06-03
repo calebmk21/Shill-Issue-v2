@@ -219,6 +219,12 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
             GameManager._instance.currentBattle.ChangeMana(-card.manaCost);
             GameManager._instance.DeckManager.handManager.DeleteCard(gameObject);
         }
+        else if (mousePosition.x > 5 && GameManager._instance.currentBattle.discardLeftThisTurn > 0)
+        {
+            GameManager._instance.currentBattle.discardLeftThisTurn -= 1;
+            GameManager._instance.currentBattle.DiscardCard(card);
+            GameManager._instance.DeckManager.handManager.DeleteCard(gameObject);
+        }
         else
         {
             // Reset position if not dropped in any area

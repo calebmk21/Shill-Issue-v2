@@ -33,4 +33,9 @@ public class BattleUI : MonoBehaviour
             }
         }
     }
+
+    public void EndPlayerTurn()
+    {
+        GameManager._instance.currentBattle.EndTurn();
+    }
 }

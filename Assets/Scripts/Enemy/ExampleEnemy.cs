@@ -18,10 +18,24 @@ public class ExampleEnemy : Enemy {
         cardsLeft = 5;
         currentTurn = 0;
 
+        drawPile = new List<ShillIssue.Card>()
+        {
+            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
+            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
+            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
+            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
+            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
+            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
+            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
+            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
+            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
+            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2]
+        };
+
         // Add cards to hand
-        for(int i = 0; i < handSize; i++){
-            AddCards();
-        }
+        //for(int i = 0; i < handSize; i++){
+        //    AddCards();
+        //}
     }
 
     // Add mana, cards
@@ -104,6 +118,9 @@ public class ExampleEnemy : Enemy {
     }
 
     public override EnemyAction DetermineAction(){
+
+        return base.DetermineAction();
+
         // Calculate turn
         currentTurn = currentTurn % numTurns;
         // Edge cases
@@ -112,7 +129,7 @@ public class ExampleEnemy : Enemy {
         }
 
         EnemyAction action;
-        if((action = DetermineAction()).actionType == ActionEnum.EndTurn){
+        if((action = base.DetermineAction()).actionType == ActionEnum.EndTurn){
             return new EnemyAction(ActionEnum.EndTurn);
         }
 

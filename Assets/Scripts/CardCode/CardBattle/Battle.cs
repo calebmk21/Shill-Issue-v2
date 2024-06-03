@@ -26,6 +26,8 @@ public class Battle : MonoBehaviour
     public float manaGain = 10f;
     public int cardsLeftThisTurn = 5;
 
+    public int discardLeftThisTurn = 1;
+
     public List<ShillIssue.StatusEffect> statuses = new List<ShillIssue.StatusEffect>();
 
     [HideInInspector]
@@ -349,6 +351,29 @@ public class Battle : MonoBehaviour
         }
     }
 
+    public void DiscardCard(ShillIssue.Card card)
+    {
+        int index = -1;
+
+        for (int i = 0; i < hand.Count; i++)
+        {
+            if (hand[i] == card)
+            {
+                index = i;
+                break;
+            }
+        }
+
+        if (index == -1)
+        {
+            return;
+        }
+
+        onDiscardCard?.Invoke(hand[index]);
+        discardPile.Add(hand[index]);
+        hand.RemoveAt(index);
+    }
+
     public void DrawCards(int num, Enemy enemy = null)
     {
         if (enemy == null)
@@ -393,6 +418,7 @@ public class Battle : MonoBehaviour
     {
         ChangeMana(manaGain);
         DrawCards(handSize - hand.Count);
+        discardLeftThisTurn = 1;
         playerTurn = true;
     }
     public void EndTurn()
@@ -543,13 +569,12 @@ public class Battle : MonoBehaviour
     //    }
     //}
 
-
-    public bool PlayCard(ShillIssue.Card card, int index, Enemy enemy = null)
+    public bool PlayCard(ShillIssue.Card card, Enemy enemy = null)
     {
-        return PlayCard(card, enemy);
+        return PlayCard(card, -1, enemy);
     }
 
-    public bool PlayCard(ShillIssue.Card card, Enemy enemy = null)
+    public bool PlayCard(ShillIssue.Card card, int index, Enemy enemy = null)
     {
         if (!IsPlayable(card)) { return false; }
 
@@ -557,7 +582,7 @@ public class Battle : MonoBehaviour
         Enemy selfTarget = enemy == null ? null : battleOpponent;
         Enemy enemyTarget = enemy == null ? battleOpponent : null;
 
-        print("card played" + card.cardType[0]);
+        //print("card played" + card.cardType[0]);
 
         foreach (ShillIssue.CardType cardType in card.cardType)
         {
@@ -573,7 +598,7 @@ public class Battle : MonoBehaviour
                     {
                         damageNum *= 2;
                     }
-                    print(damageNum + " "+ enemyTarget);
+                    //print(damageNum + " "+ enemyTarget);
                     ChangeHealth(-damageNum, enemyTarget);
                     break;
                 case ShillIssue.CardType.Heal:
@@ -596,8 +621,15 @@ public class Battle : MonoBehaviour
                     break;
             }
         }
+        if (index == -1)
+        {
+            DiscardCard(card);
+        }
+        else
+        {
+            DiscardCard(index, enemy);
+        }
         return true;
     }
-
 
 }

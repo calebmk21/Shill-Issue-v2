@@ -27,7 +27,7 @@ public abstract class Enemy
     // List of status that are currently afflicting enemy
     public List<ShillIssue.StatusEffect> statuses = new List<ShillIssue.StatusEffect>();
 
-    public List<ShillIssue.Card>  deck= new List<ShillIssue.Card>();
+    public List<ShillIssue.Card>  deck = new List<ShillIssue.Card>();
 
     public List<ShillIssue.Card> drawPile = new List<ShillIssue.Card>();
     public List<ShillIssue.Card> hand = new List<ShillIssue.Card>();
@@ -153,7 +153,7 @@ public abstract class Enemy
         }
 
         // this will hopefully try not to just play cards to completely 0 mana every turn
-        float scoreWall = (currentHealth/maxHealth > 0.5f) ? (maxMana - currentMana) / 3f : 0;
+        float scoreWall = (currentHealth/maxHealth > 0.5f) ? (maxMana - currentMana) / 5f : 0;
 
         if (bestScore < scoreWall){
             if (!discardedThisTurn){
@@ -168,10 +168,12 @@ public abstract class Enemy
 
     public virtual void PlayAction(EnemyAction action)
     {
+        Debug.Log(action.actionType);
         switch (action.actionType)
         {
             case ActionEnum.PlayCard:
-                battle.PlayCard(hand[action.index], this);
+                battle.ChangeMana(-hand[action.index].manaCost, this);
+                battle.PlayCard(hand[action.index], action.index, this);
                 break;
             case ActionEnum.DiscardCard:
                 battle.DiscardCard(action.index, this);
