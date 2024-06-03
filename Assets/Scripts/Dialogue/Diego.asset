@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879f9af75f204ff42a93c8ea93e36b82, type: 3}
+  m_Name: Diego
+  m_EditorClassIdentifier: 
+  fullName: Diego
+  neutral: {fileID: -423906908, guid: fbc6397cba1284e94995f37a74230e45, type: 3}
+  happy: {fileID: 1325030337, guid: fbc6397cba1284e94995f37a74230e45, type: 3}
+  sad: {fileID: -257735917, guid: fbc6397cba1284e94995f37a74230e45, type: 3}
+  angry: {fileID: 1574136556, guid: fbc6397cba1284e94995f37a74230e45, type: 3}

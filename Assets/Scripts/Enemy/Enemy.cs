@@ -171,7 +171,7 @@ public abstract class Enemy
         switch (action.actionType)
         {
             case ActionEnum.PlayCard:
-                battle.PlayCard(hand[action.index], action.index, this);
+                battle.PlayCard(hand[action.index], this);
                 break;
             case ActionEnum.DiscardCard:
                 battle.DiscardCard(action.index, this);

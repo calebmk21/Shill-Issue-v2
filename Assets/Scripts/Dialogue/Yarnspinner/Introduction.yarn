@@ -1,0 +1,296 @@
+﻿title: Introduction
+tags: Introduction
+--- 
+<<hide_sprite DialogueSystem>>
+Shill Issue Studios presents... All Card Memories Studio (Also known as ACM Studio)
+
+<<change_character DialogueSystem Em neutral>>
+<<show_sprite DialogueSystem>>
+What pronouns is Em Cee feeling today?
+    -> She/her
+        <<declare $heshe = "she" as string>> 
+        <<declare $HeShe = "She" as string>>
+        <<declare $himher = "her" as string>>
+        <<declare $hisher = "her" as string>>
+        <<declare $HisHer = "Her" as string>>
+        <<declare $hishers = "hers" as string>>
+        <<declare $himherself = "herself" as string>>
+    -> He/him
+        <<set $heshe = "he">> 
+        <<set $HeShe = "He">> 
+        <<set $himher = "him">>
+        <<set $hisher = "his">>
+        <<set $HisHer = "His">>
+        <<set $hishers = "his">>
+        <<set $himherself = "himself">>
+    -> They/them
+        <<set $heshe = "they">> 
+        <<set $HeShe = "They">> 
+        <<set $himher = "them">>
+        <<set $hisher = "their">>
+        <<set $HisHer = "Their">>
+        <<set $hishers = "theirs">>
+        <<set $himherself = "themself">>
+<<hide_sprite DialogueSystem>>
+It's about 6 PM in a quiet town where not much happens. Em Cee, our protagonist, is lounging in a room with {$hisher} best friend, Diego Explorador. 
+
+{$HeShe} just completed undergrad and has been job-hunting for the past few months. {$HeShe} just interviewed for a job as a game designer at the Studio Company, a world-famous studio behind a TCG game, a video game series, and an anime series. Em, as a long-time TCG fan, has been dying to work for Studio for ages. 
+
+The only problem? Studio's headquarters are about 300 miles from Em's hometown, which {$heshe} has never left before...
+
+<<show_sprite DialogueSystem>>
+<<change_character DialogueSystem Em angry>>
+Em: Ah, I'm so nervous.
+<<change_character DialogueSystem Diego neutral>>
+Diego: Still stressing about your interview?
+
+<<change_character DialogueSystem Em angry>>
+Em: I definitely messed up. There's no way they're giving it to me at this point.
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Let's do something to take your mind off of it. Want to grab something to eat?
+    -> Can we get boba?
+        Diego: I'm down. But first... pizza?
+    -> Sure. Let's get takeout.
+        Diego: Sounds good. Let's order some pizza. 
+    -> I'm not hungry.
+        Diego: I can just order for myself, then. 
+<<change_character DialogueSystem Em angry>>
+Em: Oh no. I got an email from the Studio Company. Should I open it now and get the rejection over with?
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Whatever you want, dude. Either way, I'm proud of you. I mean, if they don't choose you, they're losers. Honestly, shill issue. They're missing out big time. 
+
+<<change_character DialogueSystem Em happy>>
+Em: Oh my gosh... I got the job! I'm going to be a game designer for Studio!
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Wait, seriously, bro? Congrats!
+    -> Do a dance.
+        Em does a little shake. 
+    -> Hug Diego.
+        Diego gives you a hug.
+    -> Throw finger guns at Diego.
+        Diego throws finger guns back. 
+<<change_character DialogueSystem Diego happy>>
+Diego: Dude, that's huge! You've been playing Studio's TCG Game Shill Issue for how long?
+
+<<change_character DialogueSystem Em neutral>>
+Em: How long have we been friends?
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Since second grade. Man, even though I'm the reason you play the game, I'm not even half as good as you.
+
+<<change_character DialogueSystem Em neutral>>
+Em: Half is being generous. I think Umeko would laugh you off the TCG Championship Stage. 
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Dude, I can't believe you have a rival in a TCG Card Game. What is this, Po-ki-goh?
+    -> What's Po… go? 
+        <<change_character DialogueSystem Diego neutral>>
+        Diego: Oops, I'm mixing up copyrighted franchises. My bad.
+    -> It's time... to d- d- d- duel! 
+        <<change_character DialogueSystem Diego angry>>
+        Diego: You good? 
+        <<change_character DialogueSystem Em angry>>
+        Em: Uhh... 
+    -> Gotta catch 'em all, amrite?
+        <<change_character DialogueSystem Diego angry>>
+        Diego: Huh?
+        <<change_character DialogueSystem Em angry>>
+        Em: Nevermind. 
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Anyway, I'm going to order some pizza.
+    -> Can I get Hawaiian with barbecue sauce and honey drizzled on the top?
+        <<change_character DialogueSystem Diego angry>>
+        Diego: My brother in Christ, Hawaiian with barbecue sauce? And hot honey on top? Your sweet tooth is insane.
+        <<change_character DialogueSystem Em neutral>>
+        Em: I don't get 100% sweet creme brulee brown sugar boba milk at Tare Sea for nothing. I need a little sweet treat, as a treat. Speaking of… boba?
+        <<change_character DialogueSystem Diego neutral>>
+        Diego: Yeah, later. 
+    -> Cheese pizza?
+        <<change_character DialogueSystem Diego neutral>>
+        Diego: That's pretty basic, but sure. 
+    -> Can I get an order of cinnasticks?
+        <<change_character DialogueSystem Diego angry>>
+        Diego: Like... those cinnamon bread sticks? For... dinner?
+        <<change_character DialogueSystem Em neutral>>
+        Em Cee: Yeah. 
+        <<change_character DialogueSystem Diego angry>>
+        Diego: Your sweet tooth bro... 
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: I'm going to order.
+
+<<hide_sprite DialogueSystem>>
+Diego leaves the room to take a phone call. While Diego's gone, Em collapses back onto {$hisher} bed and stares at the ceiling, contemplating something. 
+
+After a few minutes, Diego returns. 
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Hey, bro, what's up? You look anxious again.
+    -> It's nothing. Seriously.
+        <<change_character DialogueSystem Diego angry>>
+        Diego: It's clearly not.
+        <<change_character DialogueSystem Em angry>>
+        Em: You're not going to let me get away with this, are you?
+        <<change_character DialogueSystem Diego angry>>
+        Diego: Nope. 
+    -> Well...
+<<change_character DialogueSystem Em angry>>
+Em: Studio's office is 300 miles away. I'm going to have to move.
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Dude, didn't you know about that when you applied?
+
+<<change_character DialogueSystem Em angry>>
+Em: Sure, but… I didn't think I'd get the job. When Mr. Minry suggested that I apply, I didn't think I'd get it. 
+
+<<change_character DialogueSystem Em sad>>
+Em: I'm going to have to leave town, Diego. I'm going to have to leave you, and Umeko, and Mr. Money, and my family, and Tare Sea, and–
+
+<<change_character DialogueSystem Diego angry>>
+Diego: This is your dream job. I'm not letting you turn down an amazing  opportunity just because you're too afraid to leave. I love you, Em, but you know that you need to take this.
+    -> I know… 
+    -> I could start a career as a Twitch streamer instead.
+        <<change_character DialogueSystem Diego angry>>
+        Diego: I don't think people really want to watch TCG players all day long...
+        <<change_character DialogueSystem Em neutral>>
+        Em: Just because you don't see the appeal doesn't mean others won't. 
+    -> What if I became a TCG card dealer?
+        <<change_character DialogueSystem Diego angry>>
+        Diego: Hey, don't come for my business.
+        <<change_character DialogueSystem Em neutral>>
+        Em: Oh yeah, I forgot that you sold cards out of that trenchcoat for a while.
+        <<change_character DialogueSystem Diego happy>>
+        Diego: I made good money on that. 
+        <<change_character DialogueSystem Em neutral>>
+        Em: Yeah, which is why I want to do it. 
+<<change_character DialogueSystem Diego neutral>>
+Diego: You know, if it makes you feel better, you don't have to leave right away. Plus, it's only a few hours by train. I'll help you say goodbye to everyone. Including Umeko.
+
+<<change_character DialogueSystem Em neutral>>
+Em: You're highlighting Umeko?
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Don't you have a thing for her?
+-> She's just my rival. 
+    <<change_character DialogueSystem Diego neutral>>
+    Diego: Sure.
+    <<change_character DialogueSystem Em neutral>>
+    Em: It's a very special thing for TCG players, having a rival. 
+    <<change_character DialogueSystem Diego neutral>>
+    Diego: Whatever you say…
+-> Maybe, but please don't tell her that.
+    <<change_character DialogueSystem Diego neutral>>
+    Diego: Your secret's safe with me.
+-> I don't.
+    <<change_character DialogueSystem Diego angry>>
+    Diego: Make sure you let her down easy then.
+    <<change_character DialogueSystem Em angry>>
+    Em: What do you mean?
+    <<change_character DialogueSystem Diego neutral>>
+    Diego: ...nothing.
+<<change_character DialogueSystem Diego neutral>>
+Diego: You know… for old time's sake, did you want to play Shill Issue?
+
+<<change_character DialogueSystem Em happy>>
+Em: Seriously? You never want to play it. 
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Before I change my mind. 
+
+<<change_character DialogueSystem Em neutral>>
+Em: Go get my deck.
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: No problemo. 
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: (robotically) Do you see Em's card deck?
+
+<<change_character DialogueSystem Em angry>>
+Em: …who… are you talking to?
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: (robotically) Me, neither!
+
+<<change_character DialogueSystem Em angry>>
+Em: Diego, just because your last name is Explorador… 
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Listen, I watched a lot of children's programming. Being the oldest of a big family and all that.
+
+<<change_character DialogueSystem Em angry>>
+Em: Just… go, Diego. Go and get my card deck. It should be on my desk.
+
+<<change_character DialogueSystem Diego angry>>
+Diego: I don't see it.
+
+<<change_character DialogueSystem Em angry>>
+Em: I could have sworn I left it there the last time we got Tare Sea. That was… yesterday. Wow, maybe I do have a boba addiction. 
+
+<<change_character DialogueSystem Em neutral>>
+Em: Sorry. Let me go look. 
+
+<<hide_sprite DialogueSystem>>
+Em goes over to {$hisher} desk and rummages around the piles and piles of papers. Like Em's appearance, {$hisher} desk is extremely disheveled. 
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Are you sure you took it to Tare Sea? You're usually a lot more careful with your card deck. I mean, you've been building it for like 10 years now. I don't want to think about how much you'd freak out if your card deck– 
+
+<<change_character DialogueSystem Em angry>>
+Em: It's gone. I don't see it.
+
+<<change_character DialogueSystem Diego angry>>
+Diego: I'm sure it's there…
+
+<<change_character DialogueSystem Em angry>>
+Em: It's not. 
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Calm down. It's ok, dude, seriously. 
+
+<<change_character DialogueSystem Em angry>>
+Em: It's not ok. Where. Is. My. Card. Deck.
+
+<<change_character DialogueSystem Diego angry>>
+Diego: We can go check if it's at Tare Sea. I'll call ‘em. 
+
+<<hide_sprite DialogueSystem>>
+Diego calls the boba shop. In the corner, Em is rocking back and forth on the floor. 
+<<show_sprite DialogueSystem>>
+<<change_character DialogueSystem Diego angry>>
+Diego: Yeah, have you seen a card deck? No, not like a playing card deck. Like… have you seen axolotls on the cards? Frog pogs? Boba theming? No? Nothing? Nada? Ok. Ok. Thanks, dude. Err, ma'am. 
+
+<<hide_sprite DialogueSystem>>
+Diego hangs up the phone. He looks at Em and shrugs. 
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Em sad>>
+Em: My card deck… Years of card collecting, wasted. 
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Hey… it'll be okay. 
+
+<<change_character DialogueSystem Em sad>>
+Em: I spent so much time building it up… 
+
+<<change_character DialogueSystem Diego angry>>
+Diego: You can always rebuild it.
+ 
+<<change_character DialogueSystem Em sad>>
+Em: It won't be the same. Those cards were special. You and Umeko gave me those… I've made memories with those cards. I was going to keep it as a memento of home… Without my card deck, I'm nothing. 
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: I'm going to plan a going away party for you. I'll invite everyone: you, me, Umeko, your sibling… We'll build you a new deck. We'll build new memories before you have to leave.  
+
+<<change_character DialogueSystem Em angry>>
+Em: I don't know about that…
+
+<<hide_sprite DialogueSystem>>
+
+===
