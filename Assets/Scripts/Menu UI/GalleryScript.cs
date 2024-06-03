@@ -25,4 +25,18 @@ public class GalleryScript : MonoBehaviour
     {
         
     }
+    
+    // Ming does indeed work when you poke him
+    public void buttonDebug()
+    {
+        Debug.Log("Pressed");
+    }
+
+
+    public void gallerySwap()
+    {
+        
+    }
+    
+    
 }
