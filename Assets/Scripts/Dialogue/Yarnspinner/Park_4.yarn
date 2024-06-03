@@ -1,0 +1,267 @@
+﻿title: Park_4
+tags:
+---
+
+<<hide_sprite DialogueSystem>>
+After a tough match, Em beats Umeko. However, something seems off. Umeko is a lot less composed than usual. She seems almost on the brink of tears...
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Umeko angry>>
+Umeko: Ah… you beat me. Truly, you are… splendid. 
+
+<<change_character DialogueSystem Em angry>>
+Em: Umeko, something is off.
+
+<<change_character DialogueSystem Umeko angry>>
+Umeko: I am fine. 
+
+<<change_character DialogueSystem Em angry>>
+Em: Umeko, you're crying…
+
+<<change_character DialogueSystem Umeko angry>>
+Umeko: I never cry.
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Yu, uh… want to go get some more party supplies? I uh… forgot to get something. 
+
+<<change_character DialogueSystem Yu angry>>
+Yu: Yeah, let's do that.
+
+<<hide_sprite DialogueSystem>>
+The two book it out of there. Meanwhile, Em and Umeko seem lost in their own world.
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Em angry>>
+Em: Umeko, tell me what's up. We've been rivals for how long? You can open up to me, I promise.
+
+<<change_character DialogueSystem Umeko sad>>
+Umeko: When I first met you that one spring day, I was a shy, sheltered girl. As you know, my family is quite well-off. My father owns a well-known tabletop gaming company, and it was expected that I should follow in his footsteps to become his successor. Yet I never understood his passion for games. I played Shill Issue because it was what was expected of me, not because I actually enjoyed it. He pushed me to enter championship after championship. I suppose I kept trying to live up to his expectations, but it never seemed like enough for him. I grew fatigued of always living for my family, never for myself. 
+
+Umeko: And then I met you. We were at the regional TCG championship. You were lost in thought, gazing at a cherry blossom tree. You had just won the regional competition, beating me in the final round. I remember being quite irritated. You seemed so indifferent to your victory. For you, it seemed, victory was not your reason for playing Shill Issue. Rather, you seemed enchanted by the game itself. The TCG game that was the bane of my existence was the center of yours. At the time, I found it irritating. How come I, the one who was expected to dedicate my life to tabletop games, couldn't be more like you? You had an expansive collection that must have taken much time and effort to collect, as well as an extensive knowledge of the game. You played Shill Issue because you loved it. I played it because I had to. You were everything my father wanted: passionate, driven, and unapologetically yourself. 
+
+Umeko: And I hated you for it. I hated you with every fiber of my being. But your existence gave me drive. For the first time in my entire life, I lived for something besides my family: you. I was determined to win in every match we had against each other. I pushed myself harder than I ever had before. And I began to win, not just because I had to, but because I wanted to. My father finally was proud of me, but all I craved was your approval. My hatred for you turned to respect. And, I suppose, it turned into something more. Enchantment. What you felt for Shill Issue… is what I feel for you. 
+
+<<hide_sprite DialogueSystem>>
+Umeko pauses for a second, almost as if to gauge Em's reaction. 
+<<show_sprite DialogueSystem>>
+
+Umeko:  I promised myself I would never tell you this. Frankly, I was embarrassed that my judgment was clouded by feelings and not rationality. That the feelings I attempted to muster towards Shill Issue manifested in feelings towards you. 
+
+Umeko: Reflecting upon your departure, however, I realize that you deserve to know. That I hold the utmost respect for you. That ever since I saw you gazing at the cherry blossom tree that one spring day that my life would change. That one day, my respect for you would blossom to become something else. Something special. Em, I… deeply care for you. More than you could ever realize. By no means do I expect you to reciprocate. I merely wish to tell you before you go. And I hope that you will write me, from time to time. I… I should go.
+
+<<hide_sprite DialogueSystem>>
+Umeko looks away, her face reddening. 
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Em neutral>>
+Em: Umeko… 
+    -> Em reciprocates.
+        <<change_character DialogueSystem Em happy>>
+        Em: I remember that spring day too. I struggled to win that battle a lot more than you would think. I was really intimidated by you at first, you know. Other TCG players hailed you as the best. I worked tirelessly to beat you, but you were so beautiful that it was almost distracting. Your sleek, purple hair fell in front of your face as you scrunched up your nose, looking at the cards. I could tell that you were concentrating hard, determined to beat me. And when you looked up after I won the match, I had never seen such fire in anyone's eyes before. Something had changed from the beginning of the match. You were fierce and determined rather than shy and reserved. I was staring at the cherry blossoms, just taking in what I remembered about you. I hoped that I made a similar impression on you as you did me.
+        Em: And ever since then, I couldn't stop thinking about it. I suppose it's unfortunate timing to learn that we share these feelings towards each other when I'm about to leave. But… I want to stay in touch with you. And whenever we meet up again, I hope that… perhaps our friendship can grow into something more.
+        <<change_character DialogueSystem Umeko happy>>
+        Umeko: I wish for the same. Oh, is that Diego and Yu?
+    -> Em doesn't reciprocate. 
+        <<change_character DialogueSystem Em neutral>>
+        Em: Umeko, I'm so glad that you told me. I… don't feel the same, but I just want you to know that our friendship is special to me. Our rivalry, as well. You have always pushed me to be a better version of myself. I don't feel the same romantically, but at least on a platonic level, I see you as a lifelong friend. Even when I move away, it's not the end, but rather a beginning. It's taken me some time to realize that. And, I guess, a lot of time spent with Diego screaming about moving away, haha. I don't want to lose what we have. You're a very dear friend to me, and I want to keep in touch with you.
+        <<change_character DialogueSystem Umeko neutral>>
+        Umeko: And I as well. May I ask for a favor?
+        <<change_character DialogueSystem Em neutral>>
+        Em: Sure.
+        <<change_character DialogueSystem Umeko neutral>>
+        Umeko: Please… don't tell the others what I said. In fact, please erase this from your memory. 
+        <<change_character DialogueSystem Em neutral>>
+        Em: Oh, uh, sure.
+        <<change_character DialogueSystem Umeko neutral>>
+        Umeko: Thank you. I deeply appreciate it.
+        Umeko: Ah, is that Diego and Yu?
+    -> Em doesn't understand what Umeko's saying.
+        Em: Umeko, I feel the same way! Your rivalry has been so special to me these years. You've pushed me just as much as I have pushed you. I only have gotten as deep into the Shill Issue rabbit hole because of you. 
+        Em: You know, just because I'm leaving doesn't mean that we can't stay in touch. People grow apart, sure, but I'm confident that we never will. Our rivalry is very special to me, and I hope that it will never change. You're a very dear friend to me, and I'm so glad that you hold the same feelings towards me as I do you. 
+        Em: Though it's taken me some time to realize, me moving away is not an end but a beginning. Just like that spring day we met was the beginning of a lifelong friendship. I know that we'll stay in touch, Umeko, and I'm so happy that you feel the same way I do.
+        <<change_character DialogueSystem Umeko angry>>
+        Umeko: Oh, that's… not what I meant.
+        <<change_character DialogueSystem Em neutral>>
+        Em: What do you mean?
+        <<change_character DialogueSystem Umeko neutral>>
+        Umeko: Em, I… Feel similarly. Our friendship is special. I hope it never changes.
+        <<change_character DialogueSystem Em happy>>
+        Em: Exactly! Oh, is that Diego and Yu?
+
+<<change_character DialogueSystem Yu angry>>
+Yu: Are you guys good?
+
+<<change_character DialogueSystem Umeko neutral>>
+Umeko: We are.
+
+<<change_character DialogueSystem Yu happy>>
+Yu: I'm glad.
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Well, that marks the end of the TCG Championships! Our winner is… (drumroll please)
+
+<<hide_sprite DialogueSystem>>
+Yu gives Diego a drum roll. Em and Umeko join in.
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Em Cee!
+
+<<change_character DialogueSystem Yu angry>>
+Yu: You see, it's always Em Cee that wins. Feels a little bit like plot armor, don't you think? Almost like you can start over and over again from the same save point until you win… 
+
+<<change_character DialogueSystem Em angry>>
+Em: You're just being a sore loser.
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: I'm the younger sibling. Of course I'm going to be a sore loser. 
+
+<<change_character DialogueSystem Em neutral>>
+Em: I'm going to miss how much of a gremlin you can be.
+
+Em: And I'm going to miss how much our rivalry motivates me.
+
+<<change_character DialogueSystem Umeko happy>>
+Umeko: Likewise.
+
+<<change_character DialogueSystem Em neutral>>
+Em: And I'm going to miss your dorkiness.
+
+<<change_character DialogueSystem Em neutral>>
+Em: I'm really going to miss you all. I've been thinking a lot about this. What if I didn't take the Studio job? Things could be like this forever. Diego, with his sports announcer voice. Umeko, with her straightforwardness. And Yu, with her rubber chicken.
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: I didn't bring my rubber chicken today, unfortunately. 
+
+<<change_character DialogueSystem Em happy>>
+Em: We could be together forever. We could be like that one sitcom where Yu and I live together in an apartment, and Diego's that weird guy who lives upstairs and has a terrible habit of calling people “bro” and “dude” while wearing a frog pog Hawaiian shirt. And Umeko could be that guest star that just annihilates everybody in Shill Issue randomly. We'd go to Tare Sea all the time and complain about how their teas suck but their boba texture is perfect. We'd head to the arcade and absolutely bankrupt them of plushies. We'd all gather around Yu's screen and gacha in Shengin Collision because Yu really wants to get the new character. We could even start our own game studio if we wanted to. We could have so many adventures together. 
+
+<<change_character DialogueSystem Em sad>>
+Em: Yeah, that's it… we'd be together. Which we won't be once I leave.
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Em, it's not forever. It's just a train ride away. Really, nothing's going to change.
+
+<<change_character DialogueSystem Em sad>>
+Em: But it's impossible that nothing's going to change. If I'm moving away, what's stopping anyone else from moving away? 5 years from now, we'll be in our mid 20s trying to schedule hang-outs like they're doctor's appointments. “Oh, are you free 5 months from now?” “Sorry, I've got to do X. Maybe 6 months from now?” Something like that. Once I move away, things will be different. It's not like I can just go up to your room, Yu, and just bother you. Or like I can go next door and bother you, Diego. It'll never be that easy again.  
+
+<<change_character DialogueSystem Em sad>>
+Em: And that's scary to me. That if I don't want to stagnate and stay in the same place forever, I have to move. But if I move, then I leave the people I care about most. Growing up feels like a losing game. Sometimes, I wish I could manipulate time. I could go back to the day we met on the playground, Diego. I could go back to that spring day, Umeko. And Yu, I could, I guess, be 3 years old again? And I could make this moment last forever. I wouldn't have to move on. I wouldn't have to forge my own path. 
+
+<<change_character DialogueSystem Em sad>>
+Em: I just… I just don't want to leave. It feels like the end. 
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Ok, maybe you're right. Maybe this is the end.
+
+<<change_character DialogueSystem Yu angry>>
+Yu: Diego!
+
+<<change_character DialogueSystem Diego angry>>
+Diego: It's the end of us being in the same place, at the same time. In that sense it's the end. But it's not the end of our friendship. Sure, it's going to take more work. But that doesn't mean it's over. 
+
+Diego: Em, do you remember what I said when you lost your card deck? You were so convinced that your TCG career was over. You didn't want to start again. That's why I gave you the starter deck. Because I knew that you just needed that push to start building something new. 
+
+Diego: And you're right. It's not the same. You had some really rare cards that probably would fetch a high resale value. And a lot of cards that held sentimental value. But sometimes, you have to start over. It's always hard to start something new, to let go of what you had. But that's where you can grow. That's where you can find new cards, new strategies, new beginnings. 
+
+Diego: Em, I know you're a sentimental person and that you hate change. I hope that this move is good for you. It may not work out. But maybe it will. Maybe you'll find a new thing to become really attached to. Regardless, life isn't going to stop just because you want it to. It just keeps going on, and it's up to you to make the most out of it. 
+
+Diego: It sucks to lose something so valuable. But the fact that you found something so valuable in the first place is something to celebrate. And the truth is, Em, that you're not actually losing us. I don't want to be replaced, but I hope that you find more people at Studio that make you feel happy. I want you to find more people and more things that bring value to your life. And I hope that it helps you move on and grow.
+
+Diego: I guess what I'm trying to say is… This isn't goodbye forever. It's goodbye for now.
+
+<<change_character DialogueSystem Em sad>>
+Em: Diego, I… don't know what to say.
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: How about a group hug?
+
+<<change_character DialogueSystem Em sad>>
+Em: Yu… you mean it?
+
+<<change_character DialogueSystem Yu happy>>
+Yu: Hey, I promised.
+
+<<hide_sprite DialogueSystem>>
+Everyone goes in for a group hug. 
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Umeko happy>>
+Umeko: We will miss you, Em.
+
+<<change_character DialogueSystem Yu happy>>
+Yu: I promise to terrorize you in spirit.
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Me too.
+
+<<change_character DialogueSystem Em happy>>
+Em: You're right, you guys. I think… I feel better now. Actually, you know what? I have a gift for you guys. 
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: Aw, you shouldn't have. Although… what is it?
+
+<<change_character DialogueSystem Em neutral>>
+Em: This.
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Your card deck?
+
+<<change_character DialogueSystem Em neutral>>
+Em: The entire time you were talking, Diego, I realized something. I hold on to sentimental things way too much. I have trouble letting go. And… I'm beginning to feel like I'm outgrowing Shill Issue. Sure, it's very important to me. But I think that part of why it's so important is because of you guys. All the Card Memories that we shared together made the game that much more special to me. So… I want you guys to have my card deck.
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Isn't your card deck your most prized possession?
+
+<<change_character DialogueSystem Em happy>>
+Em: You guys are. That's why I want to give you my second most prized possession. 
+
+<<change_character DialogueSystem Yu happy>>
+Yu: Em, you softie.
+
+<<change_character DialogueSystem Umeko happy>>
+Umeko: I feel quite honored.
+
+<<change_character DialogueSystem Em happy>>
+Em: I just want to show you all how much you mean to me. 
+
+<<change_character DialogueSystem Yu happy>>
+Yu: We love you, Em. And we'll miss you lots.
+
+<<change_character DialogueSystem Umeko happy>>
+Umeko: I echo that sentiment.
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Totally, dude. 
+
+<<change_character DialogueSystem Em happy>>
+Em: I love you guys. And I'll miss you guys a lot, too. I'll make sure to visit. 
+<<hide_sprite DialogueSystem>>
+Everyone hugs.
+<<show_sprite DialogueSystem>>
+
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: I think we've exceeded my hug quota for the day. Want to just eat the ice cream that Diego and I got?
+
+<<change_character DialogueSystem Em neutral>>
+Em: Since when was there ice cream?
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: Since about… 10 minutes ago?
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: I'm down for cake and ice cream.
+
+<<change_character DialogueSystem Umeko neutral>>
+Umeko: Cake sounds quite nice.
+
+<<change_character DialogueSystem Em happy>>
+Em Cee: I guess we eat cake and ice cream.
+
+<<hide_sprite DialogueSystem>>
+Everyone digs in. After cake, everyone sits around the table and laughs about old memories. Feelings of nostalgia fill the air as everyone revels in the sense of togetherness and friendship. It's the perfect end to a perfect day. 
+<<show_sprite DialogueSystem>>
+
+AT THE TRAIN STATION. Em sits on the train. {$HeShe} looks out the window and waves back to their friends. The train starts up. Slowly, Em's friends get smaller and smaller as the train speeds up. And though it feels like a bittersweet end, Em knows that it's just the beginning of a new adventure. 
+===

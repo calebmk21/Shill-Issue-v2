@@ -1,0 +1,96 @@
+﻿title: Park_2
+tags: Park_2
+---
+<<hide_sprite DialogueSystem>>
+AFTER THE MATCH. Em beat Diego... miserably. 
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: gg no re.
+
+<<change_character DialogueSystem Em angry>>
+Em: You're so cringe. 
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: But free.
+
+<<change_character DialogueSystem Em neutral>>
+Em: I'm really going to miss your stupid sense of humor. 
+
+<<hide_sprite DialogueSystem>>
+Em Cee and Diego return to Yu Cee and Umeko. 
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Em crushed me.
+
+<<change_character DialogueSystem Yu angry>>
+Yu: Now Em's going to get a big head.  
+
+<<change_character DialogueSystem Umeko happy>>
+Umeko: Em did commendably. As expected of my rival.
+
+<<hide_sprite DialogueSystem>>
+Umeko blushes slightly. Yu makes gagging noises. Diego and Em were too absorbed celebrating the game to notice the exchange. Em is doing a little dance, while Diego is shaking his head, amused by Em's dance.
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Em happy>>
+Em: Alright, who's next?
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Are we making this a Shill Issue championship?
+
+<<change_character DialogueSystem Umeko neutral>>
+Umeko: I don't see why not. As Em's rival, I would like to challenge them one last time. No… other reason.
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: Why not? Older siblings need to be humbled every once and a while.
+
+<<hide_sprite DialogueSystem>>
+Diego holds up a banana to his voice as if to pantomime a microphone. 
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Alllll right. Welcome, to Shill or No Shill, where we play Shill Issue all day, every day! I'm your host, Diego Explorador. And here are our contestants! First, the reigning champion, Em Cee. Next, Em's sibling, Yu Cee! Finally, Em Cee's rival, Umeko!
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: You nerd.
+
+<<change_character DialogueSystem Em neutral>>
+Em: Yeah, I'm with Yu on this one. 
+
+<<change_character DialogueSystem Umeko neutral>>
+Umeko: And I, as well. 
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Man, tough crowd.
+
+<<hide_sprite DialogueSystem>>
+Everybody ignores Diego. 
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: Em, how about I go first? Sibling privilege and all that.
+
+<<change_character DialogueSystem Umeko neutral>>
+Umeko: I concur. Perhaps… my match is best left for last, anyway. 
+
+<<change_character DialogueSystem Em neutral>>
+Em: If there's a consensus, sure. I'll choose Yu. On one condition.
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: What's that?
+
+<<change_character DialogueSystem Em neutral>>
+Em: I get a hug for once. 
+
+<<change_character DialogueSystem Yu angry>>
+Yu: …
+
+<<change_character DialogueSystem Em neutral>>
+Em: Please? For your older sibling? I'm going away you know…
+
+<<change_character DialogueSystem Yu angry>>
+Yu: Fiiiine. 
+
+===

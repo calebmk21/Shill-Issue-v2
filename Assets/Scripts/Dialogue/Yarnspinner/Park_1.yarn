@@ -1,0 +1,134 @@
+﻿title: Park_1
+tags: Park_1
+---
+<<hide_sprite DialogueSystem>>
+Em Cee flashes back to reality. It's a beautiful day outside. Birds are singing, Flowers are blooming... On days like these, kids like Em Cee… Should be going to going away parties.
+
+Em Cee is in a park with lots of greenery. A few picnic tables are set up with balloons, streamers, and other party decorations. Clearly, somebody's celebrating something. 
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Diego happy>>
+Diego: You're early!
+
+<<change_character DialogueSystem Em neutral>>
+Em: I'm right on time. 15 minutes early. 
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Look who's here!
+
+<<change_character DialogueSystem Umeko happy>>
+Umeko: ... 
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: ... 
+
+<<change_character DialogueSystem Em angry>>
+Em: Can you believe that this is the last time we're going to be together for a while?
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Hey, don't think like that. We've still got lots of time. And… we've got your favorite. Hawaiian pizza with barbecue sauce, and strawberry vanilla cake!
+
+<<change_character DialogueSystem Em happy>>
+Em: Cake?
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Ha, I knew you'd like it. Come on, Umeko and Yu Cee are waiting.
+
+<<hide_sprite DialogueSystem>>
+Em follows Diego to the picnic tables. Umeko puts on a cold front, but anyone can see that Umeko is happy to see Em. Yu Cee is stand-offish in the “sibling distaste” way.  
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: Hey.
+
+<<change_character DialogueSystem Em neutral>>
+Em: I thought you had band practice today.
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: I can't just let you leave without seeing you first.
+
+<<change_character DialogueSystem Em happy>>
+Em: Aww, you big softy. 
+
+<<change_character DialogueSystem Yu angry>>
+Yu: …because Mom and Dad told me to see you.
+
+<<change_character DialogueSystem Em angry>>
+Em Cee: Yu Cee what I have to deal with?
+
+<<hide_sprite DialogueSystem>>
+Somewhere, a script-reviewer groans. 
+
+Umeko looks increasingly nervous, almost as if she wants to say something. She opens her mouth, then closes it. Only Yu notices.
+
+Diego leads Em over to one of the tables with lots of papers scattered on it. As Em gets closer, {$heshe} realizes that the papers are… Shill Issue Cards?
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Em neutral>>
+Em: Are those…?
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: …Shill Issue Cards? You know it. 
+
+<<change_character DialogueSystem Em neutral>>
+Em: And are we…?
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Going to play some Shill Issue? Hell yeah!
+
+<<hide_sprite DialogueSystem>>
+Em hugs Diego.  
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Umeko sad>>
+Umeko: ... 
+
+<<change_character DialogueSystem Em happy>>
+Em: Diego, you're the best! 
+
+<<change_character DialogueSystem Em angry>>
+Em: But wait… I don't have my card deck.
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Way ahead of you.
+
+<<hide_sprite DialogueSystem>>
+Diego presses something into Em's hands.
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: It's dangerous for you to go without a card deck.
+
+<<change_character DialogueSystem Em neutral>>
+Em: Where… did you get this?
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Do you remember when I gave you your first card?
+
+<<change_character DialogueSystem Em neutral>>
+Em: Like it was yesterday. 
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: We were in second grade. At the time, I was obsessed with Shill Issue. I begged my mom for all of the card decks, and well… she wanted to spoil me. Y'know, 'cause of my dad? By the time we met, I had more cards than I knew what to do with, and nobody to play with. You were the new kid, so I knew you didn't have other kids to play with. I needed to indoctrinate someone. That's why I gave you the starter deck and taught you how to play Shill Issue. It was all self-centered, haha. 
+
+<<change_character DialogueSystem Em neutral>>
+Em: But still… I owe you a lot. You got me into the game in the first place. All my TCG Championship trophies… My job at Studio… I owe you so much.
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: You really don't… Anyway, I still have the cards from all those years ago. After you lost your card deck, I came home to find these. I thought, “I'm never going to use these.” You know I don't really play anymore. It's far more meaningful for you to have them. I know how much your card deck meant to you. I wanted you to have these as a memento of me when you leave for your new job. My entire card collection.
+
+<<change_character DialogueSystem Em angry>>
+Em: You mean it? Diego, the monetary value of these…
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: I don't care. What matters is that my best friend is happy. 
+
+<<change_character DialogueSystem Em happy>>
+Em: You're the best. How can I ever repay you?
+
+<<change_character DialogueSystem Diego happy>>
+Diego: In friendship. And… in one last match?
+
+<<change_character DialogueSystem Em neutral>>
+Em: You're on.
+===
