@@ -1,0 +1,126 @@
+﻿title: Park_3
+tags: Park_3
+---
+
+<<hide_sprite DialogueSystem>>
+Em beats Yu easily. 
+<<show_sprite DialogueSystem>>
+
+<<change_character DialogueSystem Em happy>>
+Em: Well, that was fun.
+
+<<change_character DialogueSystem Yu angry>>
+Yu: Yeah, 'cause you won.
+
+<<change_character DialogueSystem Em neutral>>
+Em: Still a sore loser, huh?
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: Can you get me boba?
+
+<<change_character DialogueSystem Em angry>>
+Em: Sure.
+
+<<change_character DialogueSystem Yu happy>>
+Yu: Yay! Guess that means I'm your favorite sibling.
+
+<<change_character DialogueSystem Em angry>>
+Em: You're… my only sibling. 
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: Uh huh.
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Well, that was entirely expected. Em being the TCG Champion and whatnot. But will Umeko, Em's rival, upset our current champion? Only time will tell…
+
+<<change_character DialogueSystem Yu angry>>
+Yu: Diego, are you still pretending to be a game announcer?
+
+<<change_character DialogueSystem Umeko angry>>
+Umeko: He has made these comments the entire match. Frankly, I find it quite tiresome. 
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: And he wonders why we make fun of him.
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Hey…
+
+<<change_character DialogueSystem Em angry>>
+Em: Guys, be nice.
+
+<<change_character DialogueSystem Em neutral>>
+Em: You're right, though. 
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Bruh.
+
+<<change_character DialogueSystem Em neutral>>
+Em: We love you, Diego, but you're just… so easy to make fun of.
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Honestly, valid. 
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Well, now for the next match! Umeko, are you ready?
+
+<<change_character DialogueSystem Umeko neutral>>
+Umeko: I am quite prepared.
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Em, are you ready?
+
+<<change_character DialogueSystem Em neutral>>
+Em: Sure…?
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Audience, are you ready?
+
+<<change_character DialogueSystem Yu happy>>
+Yu Cee: YEAH!!!
+
+<<change_character DialogueSystem Diego neutral>>
+Diego: Yu, you're surprisingly… enthusiastic.
+
+<<change_character DialogueSystem Yu neutral >>
+Yu: I mean, if you're going to be cringe, might as well join in? Plus, I get to embarrass Em. Honestly, it's a win-win for me.
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Yu, my brother in cringe…
+
+<<change_character DialogueSystem Yu angry>>
+Yu: ... 
+
+<<change_character DialogueSystem Diego angry>>
+Diego: Too much?
+
+<<change_character DialogueSystem Yu angry>>
+Yu: Yeah.
+
+<<change_character DialogueSystem Em angry>>
+Em: Yep.
+
+<<change_character DialogueSystem Umeko angry>>
+Umeko: Undeniably so.
+
+<<change_character DialogueSystem Diego angry>>
+Diego: We can just begin the match then.
+
+<<change_character DialogueSystem Diego happy>>
+Diego: Alright-y folks, we're back! Place your bets now on who'll win, Em or Umeko!
+
+<<change_character DialogueSystem Yu neutral>>
+Yu: I vote anybody but Em. 
+
+<<change_character DialogueSystem Em angry>>
+Em: Thanks for the vote of confidence.
+
+<<change_character DialogueSystem Umeko neutral>>
+Umeko: Yu, I appreciate the encouragement. 
+
+<<change_character DialogueSystem Yu happy>>
+Yu: Anything to spite Em.
+
+<<change_character DialogueSystem Em angry>>
+Em: Hey… 
+
+===
