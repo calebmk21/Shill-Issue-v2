@@ -360,7 +360,8 @@ public class EnemyDataBundle
 public enum EnemyEnum
 {
     NONE, 
-    ExampleEnemy
+    ExampleEnemy,
+    ExampleEnemy2
 }
 
 public enum ActionEnum
