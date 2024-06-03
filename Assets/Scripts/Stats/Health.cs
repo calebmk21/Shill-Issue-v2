@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth; 
-        healthBar.SetHealth(currentHealth, maxHealth); 
+        //healthBar.SetHealth(currentHealth, maxHealth); 
     }
 
     public void TakeDamage(int damage) {
@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
         }
 
         // set health bar
-        healthBar.SetHealth(currentHealth);
+        //healthBar.SetHealth(currentHealth);
     }
 
     public void Heal(int heal) {
@@ -36,7 +36,7 @@ public class Health : MonoBehaviour
             currentHealth = 100; 
         }
         // set health bar
-        healthBar.SetHealth(currentHealth);
+        //healthBar.SetHealth(currentHealth);
     }
 
     // check if Rosencrantz and Guildenstern are Dead

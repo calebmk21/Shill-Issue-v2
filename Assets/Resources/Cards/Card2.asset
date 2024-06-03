@@ -13,10 +13,16 @@ MonoBehaviour:
   m_Name: Card2
   m_EditorClassIdentifier: 
   cardName: Card2
-  descriptionText: Ming hates Chicken
+  descriptionText: Ming hates Chicken. Deal 5-7 Damage.
+  cardEnum: 1
   cardType: 01000000
+  manaCost: 5
+  targetSelf: 0
   damageMin: 5
   damageMax: 7
+  healMin: 0
+  healMax: 0
+  statusEffect: []
   attackType: 00000000
   cardImage: {fileID: 21300000, guid: 51e44e2f99ae247fd8ff5eff7d2b9805, type: 3}
   perfab: {fileID: 6907987908820797742, guid: c43ad123691ee4c088d1fe9501d701fe, type: 3}

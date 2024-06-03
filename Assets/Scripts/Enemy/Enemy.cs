@@ -43,7 +43,7 @@ public abstract class Enemy
         currentHealth = maxHealth;
 
         maxMana = 100f;
-        currentMana = maxMana;
+        currentMana = 0;
 
         manaGain = 30f;
 
@@ -55,6 +55,10 @@ public abstract class Enemy
         {
             drawPile.Add(card);
         }
+
+        battle.battleOpponent = this;
+
+        battle.UpdateResourceUI();
     }
 
     public virtual void DoTurn()

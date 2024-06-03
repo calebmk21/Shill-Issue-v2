@@ -11,7 +11,7 @@ public class DeckManager : MonoBehaviour, IDataPersistence
     public SerializableList<Card> allCards = new SerializableList<Card>();
     public int startingHandSize;
 
-    private HandManager handManager;
+    public HandManager handManager;
 
     private int currentIndex = 0;
     public int maxHandSize;
@@ -26,28 +26,40 @@ public class DeckManager : MonoBehaviour, IDataPersistence
         //Add the loaded cards to the allCards list
         allCards.AddRange(cards);
 
-        handManager = FindObjectOfType<HandManager>();
+        //handManager = FindObjectOfType<HandManager>();
+        //handManager = GetComponent<HandManager>();
 
         // Set values derp
-        maxHandSize = handManager.maxHandSize;
+        //maxHandSize = handManager.maxHandSize;
         startingHandSize = 4;
-        currentHandSize = startingHandSize;
-        if(startingHandSize > maxHandSize){
-            Debug.Log("Starting hand size is too large");
-        }
-        for (int i = 0; i < startingHandSize; i++)
-        {
-            Debug.Log($"Drawing Card");
-            DrawCard(handManager);
-        }
+        //currentHandSize = startingHandSize;
+        //if(startingHandSize > maxHandSize){
+        //    Debug.Log("Starting hand size is too large");
+        //}
+        //for (int i = 0; i < startingHandSize; i++)
+        //{
+        //    Debug.Log($"Drawing Card");
+        //    DrawCard(handManager);
+        //}
     }
+
+    void OnEnable()
+    {
+        Battle.onDrawCard += DrawCard;
+    }
+
+    void OnDisable()
+    {
+        Battle.onDrawCard -= DrawCard;
+    }
+
 
     void Update()
     {
-        if (handManager != null)
-        {
-            currentHandSize = handManager.cardsInHand.Count;
-        }
+        //    if (handManager != null)
+        //    {
+        //        currentHandSize = handManager.cardsInHand.Count;
+        //    }
     }
 
     public void DrawCard(HandManager handManager)
@@ -66,6 +78,11 @@ public class DeckManager : MonoBehaviour, IDataPersistence
             handManager.AddCardToHand(nextCard);
             currentHandSize++;
         }
+    }
+
+    public void DrawCard(Card card)
+    {
+        handManager.AddCardToHand(card);
     }
 
     public void LoadData(GameData data)

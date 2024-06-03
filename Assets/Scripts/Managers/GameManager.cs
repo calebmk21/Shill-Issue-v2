@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public List<EnemySpriteMatch> enemySpriteMatches = new List<EnemySpriteMatch>();
 
     public Dictionary<EnemyEnum, EnemyDataBundle> enemyDict = new Dictionary<EnemyEnum, EnemyDataBundle>() {
-        { EnemyEnum.ExampleEnemy, new EnemyDataBundle(typeof(Enemy), null) }
+        { EnemyEnum.ExampleEnemy, new EnemyDataBundle(typeof(ExampleEnemy), null) }
     };
 
     public List<ShillIssue.Card> deck = new List<ShillIssue.Card>();
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public enum CardEnum
     {
-        Card1, Card2
+        Card1, Card2, Card3, Card4, Card5
     }
 
     void Awake()

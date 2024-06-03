@@ -28,6 +28,9 @@ public class Battle : MonoBehaviour
 
     public List<ShillIssue.StatusEffect> statuses = new List<ShillIssue.StatusEffect>();
 
+    [HideInInspector]
+    public bool playerTurn = true;
+
     // gameplay stuffs
 
     public Enemy battleOpponent;
@@ -183,6 +186,7 @@ public class Battle : MonoBehaviour
         onChangePlayerHealth?.Invoke(currentHealth, maxHealth);
         onChangeEnemyHealth?.Invoke(battleOpponent.currentHealth, battleOpponent.maxHealth);
         onChangePlayerMana?.Invoke(currentMana, maxMana);
+        //print("curre" + currentMana);
         onChangeEnemyMana?.Invoke(battleOpponent.currentMana, battleOpponent.maxMana);
     }
 
@@ -211,6 +215,8 @@ public class Battle : MonoBehaviour
                 currentMana = 0;
             }
             onChangePlayerMana?.Invoke(currentMana, maxMana);
+
+            //print("currfasfae" + currentMana);
         }
         else
         {
@@ -286,6 +292,13 @@ public class Battle : MonoBehaviour
     public void StartBattle()
     {
         ChangeGameplayState(GameplayState.PLAYING);
+
+        ChangeHealth(maxHealth - currentHealth);
+        ChangeMana(-currentMana);
+
+        ChangeHealth(maxHealth - currentHealth, battleOpponent);
+        ChangeMana(-currentMana, battleOpponent);
+
         foreach (ShillIssue.Card card in GameManager._instance.deck)
         {
             drawPile.Add(card);
@@ -380,11 +393,13 @@ public class Battle : MonoBehaviour
     {
         ChangeMana(manaGain);
         DrawCards(handSize - hand.Count);
+        playerTurn = true;
     }
     public void EndTurn()
     {
         DecrementStatuses();
         EnemyTurn();
+        playerTurn = false;
     }
 
     public void AddStatus(ShillIssue.StatusEffect status, Enemy enemy = null){
@@ -493,7 +508,7 @@ public class Battle : MonoBehaviour
 
     public bool IsPlayable(ShillIssue.Card card)
     {
-        return card.damageMax <= currentMana;
+        return card.manaCost <= currentMana;
     }
 
     //public void HandleCardPlayedOnPlayer(ShillIssue.Card card)
@@ -529,7 +544,10 @@ public class Battle : MonoBehaviour
     //}
 
 
-
+    public bool PlayCard(ShillIssue.Card card, int index, Enemy enemy = null)
+    {
+        return PlayCard(card, enemy);
+    }
 
     public bool PlayCard(ShillIssue.Card card, Enemy enemy = null)
     {
@@ -538,6 +556,8 @@ public class Battle : MonoBehaviour
         // Determine the target based on whether enemy is null or not
         Enemy selfTarget = enemy == null ? null : battleOpponent;
         Enemy enemyTarget = enemy == null ? battleOpponent : null;
+
+        print("card played" + card.cardType[0]);
 
         foreach (ShillIssue.CardType cardType in card.cardType)
         {
@@ -553,7 +573,8 @@ public class Battle : MonoBehaviour
                     {
                         damageNum *= 2;
                     }
-                    ChangeHealth(damageNum, enemyTarget);
+                    print(damageNum + " "+ enemyTarget);
+                    ChangeHealth(-damageNum, enemyTarget);
                     break;
                 case ShillIssue.CardType.Heal:
                     ChangeHealth(UnityEngine.Random.Range(card.healMin, card.healMax + 1), selfTarget);

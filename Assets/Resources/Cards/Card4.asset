@@ -13,8 +13,19 @@ MonoBehaviour:
   m_Name: Card4
   m_EditorClassIdentifier: 
   cardName: Card4
-  cardType: 01000000
-  damageMin: 15
-  damageMax: 15
-  attackType: 00000000
-  cardSprite: {fileID: 0}
+  descriptionText: Apply 2 Vulnerable (Opponent recieves 2x Damage).
+  cardEnum: 3
+  cardType: 02000000
+  manaCost: 0
+  targetSelf: 0
+  damageMin: 0
+  damageMax: 0
+  healMin: 0
+  healMax: 0
+  statusEffect:
+  - statusType: 1
+    statusNum: 2
+    onOpponent: 1
+  attackType: 
+  cardImage: {fileID: 0}
+  perfab: {fileID: 0}

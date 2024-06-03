@@ -48,10 +48,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardDictSetup:
-  - cardType: 0
-    cardData: {fileID: 11400000, guid: 26ff00c1dc7fd4edfb2635c4329860f1, type: 2}
-  - cardType: 1
-    cardData: {fileID: 11400000, guid: e87aedcd9c1bd4e5c9774306f23e3cb1, type: 2}
+  - {fileID: 11400000, guid: 26ff00c1dc7fd4edfb2635c4329860f1, type: 2}
+  - {fileID: 11400000, guid: e87aedcd9c1bd4e5c9774306f23e3cb1, type: 2}
+  - {fileID: 11400000, guid: b69c0a1ac3f614165bb8c47a57bb3cee, type: 2}
+  - {fileID: 11400000, guid: 97aff6ffa96ab448f948cf35ee7247ab, type: 2}
+  - {fileID: 11400000, guid: 5d5a906e1c197404fbe83c914275bfba, type: 2}
+  enemySpriteMatches:
+  - enemy: 1
+    sprite: {fileID: -1844535627, guid: 1022a235e147a461189c1a100942e225, type: 3}
+  deck:
+  - {fileID: 11400000, guid: 26ff00c1dc7fd4edfb2635c4329860f1, type: 2}
+  - {fileID: 11400000, guid: e87aedcd9c1bd4e5c9774306f23e3cb1, type: 2}
+  - {fileID: 11400000, guid: b69c0a1ac3f614165bb8c47a57bb3cee, type: 2}
+  - {fileID: 11400000, guid: 97aff6ffa96ab448f948cf35ee7247ab, type: 2}
+  - {fileID: 11400000, guid: 5d5a906e1c197404fbe83c914275bfba, type: 2}
+  - {fileID: 11400000, guid: 5d5a906e1c197404fbe83c914275bfba, type: 2}
+  - {fileID: 11400000, guid: 5d5a906e1c197404fbe83c914275bfba, type: 2}
+  - {fileID: 11400000, guid: 5d5a906e1c197404fbe83c914275bfba, type: 2}
+  currentBattle: {fileID: 0}
+  currentEnemy: 0
 --- !u!1001 &136710244393866687
 PrefabInstance:
   m_ObjectHideFlags: 0

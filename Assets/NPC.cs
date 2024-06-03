@@ -8,6 +8,8 @@ public class NPC : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    public EnemyEnum enemyType;
+
     private float velX = 0;
     private float velY = 3;
     private float lastVel = 0;
