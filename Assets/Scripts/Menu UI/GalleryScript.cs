@@ -7,17 +7,17 @@ public class GalleryScript : MonoBehaviour
 {
     [Header("Panels")] 
     public GameObject baseMenu;
-    public GameObject galleryTab;
-    public GameObject charactersTab;
+    public GameObject cardFace;
+    public GameObject currentPanel;
 
     [Header("Test")] 
     [SerializeField] public bool testBool;
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        //currentPanel = GameObject.FindGameObjectWithTag("CardPanel");
     }
 
     // Update is called once per frame
