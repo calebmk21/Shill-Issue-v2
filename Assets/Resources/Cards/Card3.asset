@@ -13,8 +13,16 @@ MonoBehaviour:
   m_Name: Card3
   m_EditorClassIdentifier: 
   cardName: Card3
+  descriptionText: Deal 15-20 Damage.
+  cardEnum: 2
   cardType: 01000000
-  damageMin: 10
-  damageMax: 10
+  manaCost: 25
+  targetSelf: 0
+  damageMin: 15
+  damageMax: 20
+  healMin: 0
+  healMax: 0
+  statusEffect: []
   attackType: 00000000
-  cardSprite: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: 6170e90d7518b29448a8ac7fbdd6bba9, type: 3}
+  perfab: {fileID: 0}

@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour, IDataPersistence
     private Vector2 direction = Vector2.zero;
     [SerializeField] private InputActionReference act;
     private bool isNPC = false;
+    private EnemyEnum enemyType;
     private float timesInteracted = 0;
     private SceneSwitcher sceneSwitcher;
 
@@ -75,7 +76,7 @@ public class PlayerInput : MonoBehaviour, IDataPersistence
                 Debug.Log("battle start");
                 if (sceneSwitcher != null)
                 {
-                    sceneSwitcher.StartBattle();
+                    sceneSwitcher.StartBattle(enemyType);
                 }
                 timesInteracted = 0;
             }
@@ -87,6 +88,7 @@ public class PlayerInput : MonoBehaviour, IDataPersistence
         if (other.gameObject.CompareTag("NPC"))
         {
             isNPC = true;
+            enemyType = other.GetComponent<NPC>().enemyType;
         }
     }
 

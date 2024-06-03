@@ -15,9 +15,9 @@ public class HandManager : MonoBehaviour
     public int maxHandSize = 12;
     public List<GameObject> cardsInHand = new List<GameObject>(); //Hold a list of the card objects in our hand
 
-    void Start()
+    void Awake()
     {
-
+        GameManager._instance.DeckManager.handManager = this;
     }
 
     public void AddCardToHand(Card cardData)
@@ -35,12 +35,26 @@ public class HandManager : MonoBehaviour
         UpdateHandVisuals();
     }
 
+    public void DeleteCard(GameObject cardObject)
+    {
+        for (int i = cardsInHand.Count - 1; i > -1; i--)
+        {
+            if (cardsInHand[i] == cardObject)
+            {
+                cardsInHand.RemoveAt(i);
+                Destroy(cardObject);
+                UpdateHandVisuals();
+                return;
+            }
+        }
+    }
+
     void Update()
     {
         //UpdateHandVisuals();
     }
 
-    private void UpdateHandVisuals()
+    public void UpdateHandVisuals()
     {
         int cardCount = cardsInHand.Count;
 

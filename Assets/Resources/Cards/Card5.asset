@@ -13,8 +13,16 @@ MonoBehaviour:
   m_Name: Card5
   m_EditorClassIdentifier: 
   cardName: Card5
+  descriptionText: 
+  cardEnum: 4
   cardType: 00000000
+  manaCost: 0
+  targetSelf: 0
   damageMin: 1
   damageMax: 2
+  healMin: 0
+  healMax: 0
+  statusEffect: []
   attackType: 00000000
-  cardSprite: {fileID: 0}
+  cardImage: {fileID: 0}
+  perfab: {fileID: 0}

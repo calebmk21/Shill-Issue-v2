@@ -27,7 +27,7 @@ public abstract class Enemy
     // List of status that are currently afflicting enemy
     public List<ShillIssue.StatusEffect> statuses = new List<ShillIssue.StatusEffect>();
 
-    public List<ShillIssue.Card>  deck= new List<ShillIssue.Card>();
+    public List<ShillIssue.Card>  deck = new List<ShillIssue.Card>();
 
     public List<ShillIssue.Card> drawPile = new List<ShillIssue.Card>();
     public List<ShillIssue.Card> hand = new List<ShillIssue.Card>();
@@ -43,7 +43,7 @@ public abstract class Enemy
         currentHealth = maxHealth;
 
         maxMana = 100f;
-        currentMana = maxMana;
+        currentMana = 0;
 
         manaGain = 30f;
 
@@ -55,6 +55,10 @@ public abstract class Enemy
         {
             drawPile.Add(card);
         }
+
+        battle.battleOpponent = this;
+
+        battle.UpdateResourceUI();
     }
 
     public virtual void DoTurn()
@@ -149,7 +153,7 @@ public abstract class Enemy
         }
 
         // this will hopefully try not to just play cards to completely 0 mana every turn
-        float scoreWall = (currentHealth/maxHealth > 0.5f) ? (maxMana - currentMana) / 3f : 0;
+        float scoreWall = (currentHealth/maxHealth > 0.5f) ? (maxMana - currentMana) / 5f : 0;
 
         if (bestScore < scoreWall){
             if (!discardedThisTurn){
@@ -164,10 +168,17 @@ public abstract class Enemy
 
     public virtual void PlayAction(EnemyAction action)
     {
+        Debug.Log(action.actionType);
         switch (action.actionType)
         {
             case ActionEnum.PlayCard:
+<<<<<<< Updated upstream
+                battle.ChangeMana(-hand[action.index].manaCost, this);
+                battle.PlayCard(hand[action.index], action.index, this);
+=======
+                // changed from battle.PlayCard(hand[action.index], action.index, this);
                 battle.PlayCard(hand[action.index], this);
+>>>>>>> Stashed changes
                 break;
             case ActionEnum.DiscardCard:
                 battle.DiscardCard(action.index, this);
@@ -354,7 +365,8 @@ public class EnemyDataBundle
 public enum EnemyEnum
 {
     NONE, 
-    ExampleEnemy
+    ExampleEnemy,
+    ExampleEnemy2
 }
 
 public enum ActionEnum

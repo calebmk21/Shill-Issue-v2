@@ -7,7 +7,10 @@ public class ManaBar : MonoBehaviour
 {
     public Slider slider;
 
+    public bool isEnemy;
+
     public void SetMana(float mana, float maxMana = -1) {
+        //print("ah" +  mana + " " +  maxMana);
         if (maxMana != -1)
         {
             slider.maxValue = maxMana;
@@ -15,13 +18,27 @@ public class ManaBar : MonoBehaviour
         slider.value = mana; 
     }
 
-    void OnEnable()
+    void Awake()
     {
-        Battle.onChangePlayerMana += SetMana;
+        if (isEnemy)
+        {
+            Battle.onChangeEnemyMana += SetMana;
+        }
+        else
+        {
+            Battle.onChangePlayerMana += SetMana;
+        }
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
-        Battle.onChangePlayerMana -= SetMana;
+        if (isEnemy)
+        {
+            Battle.onChangeEnemyMana -= SetMana;
+        }
+        else
+        {
+            Battle.onChangePlayerMana -= SetMana;
+        }
     }
 }

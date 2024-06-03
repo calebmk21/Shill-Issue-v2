@@ -37671,7 +37671,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &557553222
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -37786,6 +37786,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5feb9ed974e684458b78b1d9b2492815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &953337533
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 234282224393266942, guid: 8bbded6a9729a4b499b5827d0fb63019, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759083899880108201, guid: 8bbded6a9729a4b499b5827d0fb63019, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759083899880108201, guid: 8bbded6a9729a4b499b5827d0fb63019, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759083899880108201, guid: 8bbded6a9729a4b499b5827d0fb63019, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759083899880108201, guid: 8bbded6a9729a4b499b5827d0fb63019, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759083899880108201, guid: 8bbded6a9729a4b499b5827d0fb63019, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759083899880108201, guid: 8bbded6a9729a4b499b5827d0fb63019, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759083899880108201, guid: 8bbded6a9729a4b499b5827d0fb63019, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759083899880108201, guid: 8bbded6a9729a4b499b5827d0fb63019, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759083899880108201, guid: 8bbded6a9729a4b499b5827d0fb63019, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759083899880108201, guid: 8bbded6a9729a4b499b5827d0fb63019, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8bbded6a9729a4b499b5827d0fb63019, type: 3}
 --- !u!1 &1306268438
 GameObject:
   m_ObjectHideFlags: 0
@@ -37818,6 +37875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976cde49bb791814dabd48ef7a37641e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 1
 --- !u!50 &1306268440
 Rigidbody2D:
   serializedVersion: 4
@@ -54249,3 +54307,4 @@ SceneRoots:
   - {fileID: 93466967}
   - {fileID: 1306268443}
   - {fileID: 557553224}
+  - {fileID: 953337533}

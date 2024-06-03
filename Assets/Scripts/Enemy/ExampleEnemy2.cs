@@ -4,8 +4,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-public class ExampleEnemy : Enemy {
-
+public class ExampleEnemy2 : Enemy {
     // Cards left this turn
     public int cardsLeft = 5;
     // From 0-3
@@ -15,40 +14,26 @@ public class ExampleEnemy : Enemy {
     // Is this the very first time the enemy has drawn a card?
     public bool firstTurn = false;
 
-    public ExampleEnemy(Battle _battle) : base(_battle) {
-        name = "Example enemy";
+    public ExampleEnemy2(Battle _battle) : base(_battle){
+        name = "Example enemy 2";
         enemyEnum = EnemyEnum.ExampleEnemy;
         cardsLeft = 5;
         currentTurn = 0;
         firstTurn = false;
 
-        drawPile = new List<ShillIssue.Card>()
-        {
-            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
-            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
-            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
-            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
-            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
-            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
-            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
-            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
-            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2],
-            GameManager._instance.entityObjectDict[GameManager.CardEnum.Card2]
-        };
-
         // Add cards to hand
-        //for(int i = 0; i < handSize; i++){
-        //    AddCards();
-        //}
+        for(int i = 0; i < handSize; i++){
+            AddCards();
+        }
     }
 
     // Add mana, cards
     public void OnStartTurn() {
-       battle.ChangeMana(manaGain);
-       cardsLeft = 5;
-       for(int i = 0; i < handSize; i++){
+        battle.ChangeMana(manaGain);
+        cardsLeft = 5;
+        for(int i = 0; i < handSize; i++){
             AddCards();
-       }
+        }
     }
 
     // Not really needed
@@ -57,11 +42,11 @@ public class ExampleEnemy : Enemy {
     }
 
     // Runs at start of turn, before any greedy algorithms
-    // "Brute" enemy
+    // "Heal" enemy
     // -1 implies this card doesn't exist
     public int PreCheck(){
-        // Get highest damage card
-        int index = GetLargestAttackCard();
+        // Get highest heal card
+        int index = GetHighestHealCard();
         ShillIssue.Card card;
         if(index != -1){
             card = hand[index];
@@ -69,10 +54,10 @@ public class ExampleEnemy : Enemy {
             return -1;
         }
 
-        float attackAmount = (card.damageMax + card.damageMin) / 2f;
+        float healAmount = (card.healMax + card.healMin) / 2f;
 
-        // Check if card >= 50% of player's health, -1 if doesn't exist
-        if((battle.currentHealth * 0.5f) <= attackAmount){
+        // Check if player has < 50% of health
+        if(currentHealth < 50){
             return index;
         }
 
@@ -81,8 +66,7 @@ public class ExampleEnemy : Enemy {
 
     // Return -1 if no card found
     public int Turn1() {
-        // Choose card with most damage either in one time or multiple goes
-        int index = GetLargestAttackCard();
+        int index = GetLargestManaCard();
         if(index != -1){
             return index;
         }
@@ -90,42 +74,33 @@ public class ExampleEnemy : Enemy {
     }
 
     // Return -1 if no card found
-    public int Turn2(){
-        // Choose card with least mana
-        int index = GetLowestManaCard();
-        if(index != -1){
-            return index;
-        }
-
-        return -1;
-    }
-
-    // Return -1 if no card found
-    public int Turn3(){
-        // Choose card with most mana
-        int index = GetLargestAttackCard();
-        if(index != -1){
-            return index;
-        }
-
-        return -1;
-    }
-
-    // Return -1 if no card found
-    public int Turn4(){
-        // Remove card with least health
+    public int Turn2() {
         int index = GetLowestHealCard();
         if(index != -1){
             return index;
         }
+        return -1;
+    }
 
+    // Return -1 if no card found
+    public int Turn3() {
+        int index = GetLargestManaCard();
+        if(index != -1){
+            return index;
+        }
+        return -1;
+    }
+
+    // Return -1 if no card found
+    public int Turn4() {
+        int index = GetLargestAttackCard();
+        if(index != -1){
+            return index;
+        }
         return -1;
     }
 
     public override EnemyAction DetermineAction(){
-
-        return base.DetermineAction();
-
         // Calculate turn
         currentTurn = currentTurn % numTurns;
         // Edge cases
@@ -134,7 +109,7 @@ public class ExampleEnemy : Enemy {
         }
 
         EnemyAction action;
-        if((action = base.DetermineAction()).actionType == ActionEnum.EndTurn){
+        if((action = DetermineAction()).actionType == ActionEnum.EndTurn){
             return new EnemyAction(ActionEnum.EndTurn);
         }
 
@@ -173,7 +148,7 @@ public class ExampleEnemy : Enemy {
             int turn3 = Turn3();
             if(turn3 != -1){
                 currentTurn++;
-                return new EnemyAction(ActionEnum.PlayCard, turn3);
+                return new EnemyAction(ActionEnum.DiscardCard, turn3);
             } else {
                 currentTurn++;
                 return base.DetermineAction();
@@ -210,5 +185,4 @@ public class ExampleEnemy : Enemy {
             }
         }
     }
-
 }

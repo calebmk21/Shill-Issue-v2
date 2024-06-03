@@ -14,7 +14,7 @@ public class Mana : MonoBehaviour
     void Start()
     {
         currentMana = maxMana; 
-        manaBar.SetMana(currentMana, maxMana); 
+        //manaBar.SetMana(currentMana, maxMana); 
     }
 
     public void DecreaseMana(int dec) {
@@ -25,7 +25,7 @@ public class Mana : MonoBehaviour
         }
 
         // set health bar
-        manaBar.SetMana(currentMana);
+        //manaBar.SetMana(currentMana);
     }
 
     public void IncreaseMana(int inc) {
@@ -35,7 +35,7 @@ public class Mana : MonoBehaviour
             currentMana = 100; 
         }
         // set health bar
-        manaBar.SetMana(currentMana);
+        //manaBar.SetMana(currentMana);
     }
 
     public int GetMana() {

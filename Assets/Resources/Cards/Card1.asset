@@ -13,10 +13,16 @@ MonoBehaviour:
   m_Name: Card1
   m_EditorClassIdentifier: 
   cardName: Card1
-  descriptionText: Little dudes!
+  descriptionText: Little dudes! Heal for 5-8.
+  cardEnum: 0
   cardType: 00000000
-  damageMin: 3
-  damageMax: 5
-  attackType: 01000000
+  manaCost: 10
+  targetSelf: 1
+  damageMin: 0
+  damageMax: 0
+  healMin: 5
+  healMax: 8
+  statusEffect: []
+  attackType: 
   cardImage: {fileID: 21300000, guid: 6df9b9dea17c54ab394171b79edb19d0, type: 3}
   perfab: {fileID: 7366723940860846956, guid: 2e1f672b9fade4e96a4ab3d0ccaabcf0, type: 3}

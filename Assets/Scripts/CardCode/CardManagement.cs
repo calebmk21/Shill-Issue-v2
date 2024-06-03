@@ -37,6 +37,8 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
 
+        card = GetComponent<CardDisplay>().cardData;
+
         if (canvas != null)
         {
             canvasRectTransform = canvas.GetComponent<RectTransform>();
@@ -59,7 +61,7 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
         if (playerArea != null)
         {
             playerAreaCollider = playerArea.GetComponent<BoxCollider2D>();
-            Debug.Log("Player Area found");
+            //Debug.Log("Player Area found");
         }
         else
         {
@@ -69,7 +71,7 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
         if (enemyArea != null)
         {
             enemyAreaCollider = enemyArea.GetComponent<BoxCollider2D>();
-            Debug.Log("Enemy Area found");
+            //Debug.Log("Enemy Area found");
         }
         else
         {
@@ -190,32 +192,48 @@ public class CardMovement : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
     {
         currentState = 0;
 
+        card = GetComponent<CardDisplay>().cardData;
+
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Check if the mouse is released in the player area
-        if (IsMouseInArea(playerAreaCollider, mousePosition))
+        //if (IsMouseInArea(playerAreaCollider, mousePosition))
+        //{
+        //    Debug.Log("Card dropped on player area");
+        //    //Battle battle = FindObjectOfType<Battle>();
+        //    //battle?.HandleCardPlayedOnPlayer(card);
+        //    GameManager._instance.currentBattle.PlayCard(card);
+        //    GameManager._instance.DeckManager.handManager.DeleteCard(gameObject);
+        //}
+        //// Check if the mouse is released in the enemy area
+        //else if (IsMouseInArea(enemyAreaCollider, mousePosition))
+        //{
+        //    Debug.Log("Card dropped on enemy area");
+        //    //Battle battle = FindObjectOfType<Battle>();
+        //    //battle?.HandleCardPlayedOnEnemy(card);
+        //    GameManager._instance.currentBattle.PlayCard(card);
+        //    GameManager._instance.DeckManager.handManager.DeleteCard(gameObject);
+        //}
+        if (mousePosition.y > 0 && GameManager._instance.currentBattle.IsPlayable(card) && GameManager._instance.currentBattle.PlayCard(card))
         {
-            Debug.Log("Card dropped on player area");
-            //Battle battle = FindObjectOfType<Battle>();
-            //battle?.HandleCardPlayedOnPlayer(card);
-            GameManager._instance.currentBattle.PlayCard(card);
+            GameManager._instance.currentBattle.ChangeMana(-card.manaCost);
+            GameManager._instance.DeckManager.handManager.DeleteCard(gameObject);
         }
-        // Check if the mouse is released in the enemy area
-        else if (IsMouseInArea(enemyAreaCollider, mousePosition))
+        else if (mousePosition.x > 5 && GameManager._instance.currentBattle.discardLeftThisTurn > 0)
         {
-            Debug.Log("Card dropped on enemy area");
-            //Battle battle = FindObjectOfType<Battle>();
-            //battle?.HandleCardPlayedOnEnemy(card);
-            GameManager._instance.currentBattle.PlayCard(card);
+            GameManager._instance.currentBattle.discardLeftThisTurn -= 1;
+            GameManager._instance.currentBattle.DiscardCard(card);
+            GameManager._instance.DeckManager.handManager.DeleteCard(gameObject);
         }
         else
         {
             // Reset position if not dropped in any area
             rectTransform.localPosition = originalPosition;
             Debug.Log("Made it to the else statement :/");  
+            rectTransform.SetSiblingIndex(originalSiblingIndex);
         }
         // Reset the card's sibling index to its original value
-        rectTransform.SetSiblingIndex(originalSiblingIndex);
+        GameManager._instance.DeckManager.handManager.UpdateHandVisuals();
         playArrow.SetActive(false); // Disable playArrow
     }
 

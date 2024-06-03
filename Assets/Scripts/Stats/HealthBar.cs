@@ -7,6 +7,8 @@ public class HealthBar : MonoBehaviour
 {
     public Slider slider;
 
+    public bool isEnemy;
+
     public void SetHealth(float health, float maxHealth = -1)
     {
         if (maxHealth != -1)
@@ -16,13 +18,27 @@ public class HealthBar : MonoBehaviour
         slider.value = health;
     }
 
-    void OnEnable()
+    void Awake()
     {
-        Battle.onChangePlayerHealth += SetHealth;
+        if (isEnemy)
+        {
+            Battle.onChangeEnemyHealth += SetHealth;
+        }
+        else
+        {
+            Battle.onChangePlayerHealth += SetHealth;
+        }
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
-        Battle.onChangePlayerHealth -= SetHealth;
+        if (isEnemy)
+        {
+            Battle.onChangeEnemyHealth -= SetHealth;
+        }
+        else
+        {
+            Battle.onChangePlayerHealth -= SetHealth;
+        }
     }
 }

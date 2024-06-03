@@ -49,14 +49,14 @@ public class SceneSwitcher : MonoBehaviour
         }
     }
 
-    public void StartBattle()
+    public void StartBattle(EnemyEnum enemyType)
     {
         // Save player position before switching to the card battle scene
         if (playerInput != null)
         {
             GameManager.GameData.playerPosition = playerInput.transform.position;
         }
-        GameManager._instance.currentEnemy = EnemyEnum.ExampleEnemy;
+        GameManager._instance.currentEnemy = enemyType;
         SceneManager.LoadScene("CardBattleCombined");
     }
 
