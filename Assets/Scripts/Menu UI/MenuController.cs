@@ -21,10 +21,15 @@ public class MenuController : MonoBehaviour
     
 
     public static bool isPaused = false;
-    
+
     // Note to self: un-comment the audio stuff once an audio listener is made
-    
-    
+
+    private void Start()
+    {
+        pauseMenu.SetActive(false);
+    }
+
+
     private void Awake()
     {
         //audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
