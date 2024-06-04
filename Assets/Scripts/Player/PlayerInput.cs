@@ -16,7 +16,9 @@ public class PlayerInput : MonoBehaviour, IDataPersistence
     private SceneSwitcher sceneSwitcher;
     private VisualNovel visualNovel; 
     private string[] dialogueNode = {"Battle_1", "Battle_2", "Battle_3", "Battle_4"}; 
-    private bool canBattle = false; 
+    private bool canBattle = false;
+    [SerializeField] private AudioSource moveSound;
+    private bool isMoving = false;
 
     void Awake()
     {
@@ -41,9 +43,28 @@ public class PlayerInput : MonoBehaviour, IDataPersistence
         {
             sceneSwitcher.SwitchScene();
         }
+
+        if (rb.velocity.magnitude != 0)
+        {
+            isMoving = true; // better use != 0 here for both directions
+        }
+        else
+        {
+            isMoving = false;
+        }
+
+        if (isMoving && !moveSound.isPlaying)
+        {
+            moveSound.Play(); // if player is moving and audiosource is not playing play it
+        }
+        if (!isMoving)
+        {
+            moveSound.Stop(); // if player is not moving and audiosource is playing stop it
+        }
+
     }
 
-    private void OnEnable()
+        private void OnEnable()
     {
         act.action.performed += Interact;
     }
