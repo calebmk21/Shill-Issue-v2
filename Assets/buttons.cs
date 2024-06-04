@@ -9,11 +9,11 @@ public class buttons : MonoBehaviour
     public void newGameButton()
     {
         DataPersistenceManager.instance.NewGame();
-        SceneManager.LoadSceneAsync("MovementTest");
+        SceneManager.LoadSceneAsync("OverworldCombined");
     }
 
     public void continueButton()
     {
-        SceneManager.LoadSceneAsync("MovementTest");
+        SceneManager.LoadSceneAsync("OverworldCombined");
     }
 }
